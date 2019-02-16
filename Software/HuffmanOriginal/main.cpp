@@ -8,50 +8,22 @@ int main(int argc, char *argv[])
     int op;
     string nombre_archivo = "";
 
-    cout << "Prueba de Compresión y Descompresión";
-
-    do
+    if(argc < 3)
     {
-        system("clear");
-        cout << endl <<"1. Fase de compresion...";
-        cout << endl <<"2. Fase de descompresion...";
-        cout << endl <<"3. Salir";
-        cout << endl << "Ingrese opcion: ";
-        cin >> op;
-
-        system("clear");
-        switch(op)
+        cout << "Uso: " << endl;
+        cout << "HuffmanCompressor.exe [ comprimir | descomprimir ] [ archivoParaComprimir | archivoParaDescomprimir ]" << endl;
+    }
+    else
+    {
+        if((std::string(argv[1]) == "comprimir"))
         {
-            case 1: cout << "Archivo a comprimir: ";
-					cin.ignore();
-                    getline(cin, nombre_archivo);
-                    compresor->comprimir(nombre_archivo);
-                    
-                    cout << endl <<"Hecho...";
-                    cin.ignore();
-                    cout << "Presione alguna tecla para continuar...";
-                    getchar();
-                    break;
-
-            case 2: cout << "Archivo a descomprimir: ";
-					cin.ignore();
-					getline(cin, nombre_archivo);
-					compresor->descomprimir(nombre_archivo);
-					
-                    cout << endl << "Hecho..." << endl;
-                    cin.ignore();
-                    cout << "Presione alguna tecla para continuar...";
-                    getchar();
-                    break;
-
-			case 3: break;
-
-            default: cout << "La opcion seleccionada no es valida." << endl;
-                    system("pause");
+            compresor->comprimir((std::string(argv[2])));
+        }
+        else if((std::string(argv[1]) == "descomprimir"))
+        {
+            compresor->descomprimir((std::string(argv[2])));
         }
     }
-    while( op != 3 );
-
     return 0;
 }
 

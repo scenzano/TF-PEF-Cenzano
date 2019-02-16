@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
         switch(op)
         {
             case 1: cout << "Archivo a comprimir: ";
-					
+					cin.ignore();
                     getline(cin, nombre_archivo);
                     compresor->comprimir(nombre_archivo);
                     
                     cout << endl <<"Hecho...";
-                    cout << "Presione alguna tecla para continuar...";
                     cin.ignore();
+                    cout << "Presione alguna tecla para continuar...";
                     getchar();
                     break;
 
@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
 					cin.ignore();
 					getline(cin, nombre_archivo);
 					compresor->descomprimir(nombre_archivo);
-					cout << endl << "Hecho..." << endl;
-
+					
+                    cout << endl << "Hecho..." << endl;
                     cin.ignore();
                     cout << "Presione alguna tecla para continuar...";
                     getchar();
