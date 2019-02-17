@@ -1,0 +1,35 @@
+        -:    0:Source:../../HuffmanOriginal/object.cpp
+        -:    0:Programs:42
+        -:    1:#include "object.h"
+        -:    2:
+        -:    3://********************Constructores y Destructor
+    10248:    4:Object::Object() {
+    10248:    5:}
+        -:    6:
+     4092:    7:Object::~Object() {
+     4092:    8:}
+        -:    9:
+        -:   10:/*
+        -:   11: * Determina si los objetos son "iguales"... Lo unico que puede hacer
+        -:   12: * en un contexto polimorfico es comparar las direcciones de memoria...
+        -:   13: */
+    #####:   14:bool Object::equals( Object * otro ) {
+    #####:   15:    return ( this == otro );
+        -:   16:}
+        -:   17:
+        -:   18:// Conversion a String
+    #####:   19:string Object::toString()
+        -:   20:{
+    #####:   21:    string res( typeid(*this).name() );
+        -:   22:    char cad[10];
+    #####:   23:    sprintf( cad, "%x", (int)this );
+    #####:   24:    res.append( "@" );
+    #####:   25:    res.append( cad );
+    #####:   26:    return res;
+        -:   27:}
+        -:   28:
+        -:   29:// Obtencion de un identificador numérico
+    #####:   30:int Object::hashCode()
+        -:   31:{
+    #####:   32:    return (int)this;
+       36:   33:}

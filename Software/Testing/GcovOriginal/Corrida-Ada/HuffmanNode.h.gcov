@@ -1,0 +1,41 @@
+        -:    0:Source:../../HuffmanOriginal/HuffmanNode.h
+        -:    0:Programs:42
+        -:    1:#ifndef _HUFFMANNODE_H
+        -:    2:#define	_HUFFMANNODE_H
+        -:    3:
+        -:    4:#include <iostream>
+        -:    5:#include "object.h"
+        -:    6:#include "comparable.h"
+        -:    7:
+     2044:    8:class HuffmanNode  : public Comparable
+        -:    9:{
+        -:   10:	int  frecuencia;	
+        -:   11:        int  padre;		// para la fase de compresion
+        -:   12:	bool esIzquierdo;	
+        -:   13:	int izq, der;		// para la fase de descompresion
+        -:   14:
+        -:   15:            public:
+        -:   16:    
+        -:   17:        HuffmanNode();
+        -:   18:	HuffmanNode(int f, int p, bool e, int i, int d);
+        -:   19:        virtual ~HuffmanNode();
+        -:   20:	
+     7152:   21:	int  getFrecuencia() { return frecuencia; }
+     4088:   22:	void setFrecuencia(int x) { frecuencia = x; }
+        -:   23:
+    20672:   24:	int  getPadre() { return padre; }
+     4084:   25:	void setPadre(int x) { padre = x; }
+        -:   26:
+    20672:   27:	bool isLeft() { return esIzquierdo; }
+     4084:   28:	void setLeft(bool x) { esIzquierdo = x; }
+        -:   29:
+   688160:   30:	int  getIzquierdo() { return izq; }
+     3064:   31:	void setIzquierdo(int x) { izq = x; }
+        -:   32:
+   245048:   33:	int  getDerecho() { return der; }
+     3064:   34:	void setDerecho(int x) { der = x; }
+        -:   35:
+        -:   36:	int  compareTo(Object * x); 
+        -:   37:};
+        -:   38:
+        -:   39:#endif /* _HUFFMANNODE_H */

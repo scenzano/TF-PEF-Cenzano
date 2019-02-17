@@ -1,0 +1,49 @@
+        -:    0:Source:../../HuffmanOriginal/HuffmanTree.h
+        -:    0:Programs:42
+        -:    1:#ifndef HUFFMANTREE_H
+        -:    2:#define HUFFMANTREE_H
+        -:    3:#include <iostream>
+        -:    4:#include "object.h"
+        -:    5:#include "HuffmanCode.h"
+        -:    6:#include "HuffmanNode.h"
+        -:    7:#include "Frequency.h"
+        -:    8:#include "Heap.h"
+        -:    9:
+        -:   10:#define MAXSYMBS 256
+        -:   11:#define MAXNODES 2 * MAXSYMBS - 1
+        -:   12:
+        -:   13:class HuffmanTree : public Object
+        -:   14:{
+        -:   15:        private:
+        -:   16:            
+        -:   17:    HuffmanCode *codigos[MAXSYMBS];
+        -:   18:    HuffmanNode arbol[MAXNODES];
+        -:   19:    unsigned char signos[MAXSYMBS];
+        -:   20:    int tam;
+        -:   21:
+        -:   22:    int buscar(unsigned char x);
+        -:   23:
+        -:   24:        public:
+        -:   25:            
+        -:   26:    HuffmanTree(int n);
+        -:   27:    virtual ~HuffmanTree();
+        -:   28:
+        -:   29:    int length() { return tam; }
+        -:   30:    void setNodo(unsigned char x, int f, int i);
+        -:   31:    void setNodo(HuffmanNode hn, int i);
+    59372:   32:    unsigned char getSigno(int i) { return signos[i]; }
+     2048:   33:    void setSigno(unsigned char x, int i) { signos[i] = x; }
+     1024:   34:    int  getFrecuencia(int i) { return arbol[i].getFrecuencia(); }
+     1024:   35:    void setFrecuencia(int i, int f) { arbol[i].setFrecuencia(f); }
+    58348:   36:    HuffmanCode *getCodigo(int i) { return codigos[i]; }
+        -:   37:    void setCodigo(HuffmanCode *c, int i) { codigos[i] = c;}
+        -:   38:    HuffmanCode *getCodigo(unsigned char x);
+        -:   39:    void setCodigo(HuffmanCode *c, unsigned char x);
+        8:   40:    HuffmanNode *getArbol() { return arbol; }
+        -:   41:    void encode();
+        -:   42:    void makeTree();
+        -:   43:    void makeCodes();
+        -:   44:    string toString();
+        -:   45:};
+        -:   46:
+        -:   47:#endif // HUFFMANTREE_H

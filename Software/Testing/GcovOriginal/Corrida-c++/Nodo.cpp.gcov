@@ -1,0 +1,39 @@
+        -:    0:Source:../../HuffmanOriginal/Nodo.cpp
+        -:    0:Programs:42
+        -:    1:#include "Nodo.h"
+        -:    2:
+    #####:    3:Nodo::Nodo()
+        -:    4:{
+    #####:    5:        info=0;
+    #####:    6:        next=0;
+    #####:    7:}
+        -:    8:
+    #####:    9:Nodo::Nodo(Comparable *x,Nodo *p)
+        -:   10:{
+    #####:   11:	info=x;
+    #####:   12:	next = p;
+    #####:   13:}
+        -:   14:
+    #####:   15:Nodo :: ~Nodo()
+        -:   16:{
+    #####:   17:}
+        -:   18:
+    #####:   19:Comparable * Nodo::getInfo()
+        -:   20:{
+    #####:   21:	return info;
+        -:   22:}
+        -:   23:
+    #####:   24:void Nodo :: setInfo(Comparable * x)
+        -:   25:{
+    #####:   26:	info = x;
+    #####:   27:}
+        -:   28:
+    #####:   29:Nodo * Nodo::getNext()
+        -:   30:{
+    #####:   31:	return next;
+        -:   32:}
+        -:   33:
+    #####:   34:void Nodo :: setNext(Nodo *p)
+        -:   35:{
+    #####:   36:	next=p;
+       36:   37:}

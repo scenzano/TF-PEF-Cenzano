@@ -1,0 +1,150 @@
+        -:    0:Source:../../HuffmanOriginal/HuffmanTree.cpp
+        -:    0:Programs:42
+        -:    1:#include "HuffmanTree.h"
+        -:    2:
+        8:    3:HuffmanTree::HuffmanTree(int n)
+        -:    4:{
+        8:    5:    tam = n;
+     2056:    6:    for(int i=0; i<MAXSYMBS; i++)
+        -:    7:    {
+     2048:    8:        signos[i] = ' ';
+     2048:    9:        codigos[i] = new HuffmanCode();
+        -:   10:    }
+        8:   11:}
+        -:   12:
+    #####:   13:HuffmanTree::~HuffmanTree()
+        -:   14:{
+    #####:   15:    for( int i=0; i<MAXSYMBS; i++ )
+        -:   16:    {
+    #####:   17:        delete codigos[i];
+        -:   18:    }
+    #####:   19:}
+        -:   20:
+     1024:   21:void HuffmanTree::setNodo(unsigned char x, int f, int i)
+        -:   22:{
+     1024:   23:    setSigno(x, i);
+     1024:   24:    setFrecuencia(i, f);
+     1024:   25:}
+        -:   26:
+     2044:   27:void HuffmanTree::setNodo(HuffmanNode hn, int i)
+        -:   28:{
+     2044:   29:    arbol[i].setFrecuencia(hn.getFrecuencia());
+     2044:   30:    arbol[i].setLeft(hn.isLeft());
+     2044:   31:    arbol[i].setIzquierdo(hn.getIzquierdo());
+     2044:   32:    arbol[i].setDerecho(hn.getDerecho());
+     2044:   33:    arbol[i].setPadre(hn.getPadre());
+     2044:   34:}
+        -:   35:
+   462688:   36:HuffmanCode * HuffmanTree::getCodigo( unsigned char x )
+        -:   37:{
+   462688:   38:    int i = buscar(x);
+   462688:   39:    return getCodigo(i);
+        -:   40:}
+        -:   41:
+    #####:   42:void HuffmanTree::setCodigo(HuffmanCode *c, unsigned char x)
+        -:   43:{
+    #####:   44:    int i = buscar( x );
+    #####:   45:    codigos[i] = c;
+    #####:   46:}
+        -:   47:
+        4:   48:void HuffmanTree::encode()
+        -:   49:{
+        4:   50:    makeTree();
+        4:   51:    makeCodes();
+        4:   52:}
+        -:   53:
+        4:   54:void HuffmanTree::makeTree()
+        -:   55:{
+        -:   56:    // crear una cola de prioridades ordenada por las frecuencias de los simbolos...
+        4:   57:    Heap *cp = new Heap();
+     1028:   58:    for(int i = 0; i < tam; i++)
+        -:   59:    {
+     1024:   60:        Frequency *fr = new Frequency(i, this->getFrecuencia(i));
+     1024:   61:        cp->add(fr);
+        -:   62:    }
+        -:   63:
+        -:   64:    // p apunta al siguiente nodo libre disponible en el arbol... 
+     1024:   65:    for(int p = tam; p < 2 * tam - 1; p++)
+        -:   66:    {
+        -:   67:        // ...tomar los descriptores de frecuencia p1 y p2 con menor frecuencia de la cola de prioridad...
+     1020:   68:        Frequency *p1 = (Frequency *) cp->remove();
+     1020:   69:        Frequency *p2 = (Frequency *) cp->remove();
+        -:   70:
+        -:   71:        // ...ajustar ambos nodos como hijos del nuevo nodo p...
+     1020:   72:        int ip1 = p1->getIndice();
+     1020:   73:        int ip2 = p2->getIndice();
+     1020:   74:        arbol[ip1].setPadre(p);
+     1020:   75:        arbol[ip1].setLeft(true);
+     1020:   76:        arbol[ip2].setPadre(p);
+     1020:   77:        arbol[ip2].setLeft(false);
+        -:   78:
+        -:   79:        // calcular la frecuencia del nodo union que se acaba de crear...
+     1020:   80:        int f = arbol[ip1].getFrecuencia() + arbol[ip2].getFrecuencia();
+        -:   81:
+        -:   82:        // guardar esa frecuencia en el nodo union..
+     1020:   83:        arbol[p].setFrecuencia(f);
+        -:   84:
+        -:   85:        // guardar los indices de sus hijos...
+     1020:   86:        arbol[p].setIzquierdo(ip1);
+     1020:   87:        arbol[p].setDerecho(ip2);
+        -:   88:
+        -:   89:        // agregar el descriptor de frecuencia del nodo union a la cola de prioridad...
+     1020:   90:        Frequency *nf = new Frequency (p, f);
+     1020:   91:        cp->add(nf);
+        -:   92:    }    
+        4:   93:    delete cp;
+        4:   94:}
+        -:   95:
+        8:   96:void HuffmanTree::makeCodes()
+        -:   97:{
+        -:   98:    // indice de la raiz en el arreglo que representa al arbol...
+        8:   99:    int iraiz = (2 * tam - 1) - 1;
+        -:  100:
+        -:  101:    // ahora extraemos los codigos del arbol y los guardamos en el vector de codigos
+     2056:  102:    for(int i=0; i<tam; i++)
+        -:  103:    {
+        -:  104:        // navegamos hacia arriba...
+     2048:  105:        int p = i;
+    34928:  106:        while(p != iraiz)
+        -:  107:        {
+    16440:  108:            if(arbol[p].isLeft())
+        -:  109:            {
+     8112:  110:                codigos[i]->setBit(0);
+        -:  111:            }
+        -:  112:            else
+        -:  113:            {
+     8328:  114:                codigos[i]->setBit(1);
+        -:  115:            }
+    16440:  116:            p = arbol[p].getPadre();
+        -:  117:        }
+        -:  118:    }    
+        8:  119:}
+        -:  120:
+    #####:  121:string HuffmanTree::toString()
+        -:  122:{
+    #####:  123:    string res = "Signos Codificados";
+        -:  124:
+    #####:  125:    for(int i=0; i<tam; i++)
+        -:  126:    {
+        -:  127:        char x[2];
+    #####:  128:        x[0] = signos[i];
+    #####:  129:        x[1] = '\0';
+        -:  130:
+    #####:  131:        res.append("\nSigno: ");
+    #####:  132:        res.append(x);
+    #####:  133:        res.append("\tCodigo: ");
+    #####:  134:        res.append(codigos[i]->toString());
+        -:  135:    }
+        -:  136:
+    #####:  137:    return res;
+        -:  138:}
+        -:  139:
+        -:  140:// **** metodos privados
+   462688:  141:int HuffmanTree::buscar(unsigned char x)
+        -:  142:{
+ 58674444:  143:    for(int i = 0; i<tam; i++)
+        -:  144:    {
+ 58674444:  145:        if( x == signos[i] ) return i;
+        -:  146:    }
+    #####:  147:    return -1;
+       36:  148:}

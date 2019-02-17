@@ -1,0 +1,32 @@
+        -:    0:Source:../../HuffmanOriginal/HuffmanNode.cpp
+        -:    0:Programs:42
+        -:    1:#include "HuffmanNode.h"
+        -:    2:
+     4088:    3:HuffmanNode::HuffmanNode()
+        -:    4:{
+     4088:    5:    frecuencia = 0;
+     4088:    6:    padre = -1;
+     4088:    7:    esIzquierdo = false;
+     4088:    8:    izq = der = -1;
+     4088:    9:}
+        -:   10:
+     2044:   11:HuffmanNode::HuffmanNode(int f, int p, bool e, int i, int d)
+        -:   12:{
+     2044:   13:    frecuencia = f;
+     2044:   14:    padre = p;
+     2044:   15:    esIzquierdo = e;
+     2044:   16:    izq = i;
+     2044:   17:    der = d;
+     2044:   18:}
+        -:   19:
+     4088:   20:HuffmanNode::~HuffmanNode()
+        -:   21:{
+     4088:   22:}
+        -:   23:
+    #####:   24:int HuffmanNode::compareTo(Object * x)
+        -:   25:{
+    #####:   26:    HuffmanNode *p = dynamic_cast < HuffmanNode * > ( x );
+    #####:   27:    return this->frecuencia  - p->frecuencia;
+       36:   28:}
+        -:   29:
+        -:   30:

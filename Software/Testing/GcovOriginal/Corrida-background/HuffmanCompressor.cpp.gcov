@@ -1,0 +1,354 @@
+        -:    0:Source:../../HuffmanOriginal/HuffmanCompressor.cpp
+        -:    0:Programs:42
+        -:    1:#include "HuffmanCompressor.h"
+        -:    2:#include "string.h"
+        -:    3:
+       12:    4:HuffmanCompressor::HuffmanCompressor()
+        -:    5:{
+       12:    6:}
+        -:    7:
+        4:    8:void HuffmanCompressor::comprimir (string fileName)
+        -:    9:{
+        -:   10:        //obtengo el nombre del archivo, sin la extension
+        4:   11:        unsigned int point_pos = fileName.find(".");
+        -:   12:        
+        -:   13:        if( point_pos == string::npos ) point_pos = fileName.length();
+        8:   14:        string nombre = fileName.substr(0, point_pos );
+        -:   15:
+        -:   16:        // abro los archivos
+        4:   17:        char * f1 = new char[fileName.length() + 1];
+        4:   18:        strcpy(f1, fileName.c_str());
+        -:   19:
+        4:   20:        nombre.append(".cmp");
+        4:   21:        char * f2 = new char[nombre.length() + 1];
+        4:   22:        strcpy(f2, nombre.c_str());
+        -:   23:
+        4:   24:        FILE *fuente = fopen(f1, "rb");
+        4:   25:        if( !fuente ) { cout<<"Error de apertura: " << f1 << endl; getchar(); return; }
+        -:   26:
+        4:   27:        FILE *comprimido = fopen(f2, "wb");
+        4:   28:        if( !comprimido ) { cout<<"Error de apertura: " << f2 << endl; getchar(); fclose(fuente); return; }
+        -:   29:
+        -:   30:        // contamos cuantas veces aparece cada byte en el archivo fuente
+        -:   31:        int conteo[256];
+        -:   32:        unsigned char byte;
+        4:   33:        int t = sizeof(unsigned char);
+        -:   34:
+        -:   35:        // contamos los bytes diferentes que hay en el archivo ...
+        -:   36:        int i;
+        4:   37:        for(i=0; i<256; i++) conteo[i] = 0;
+        -:   38:
+        4:   39:        fread(&byte, t, 1, fuente);
+   925380:   40:        while( !feof(fuente) )
+        -:   41:        {
+   462688:   42:            conteo[byte]++;
+   462688:   43:            fread(&byte, t, 1, fuente);
+        -:   44:        }
+        -:   45:
+        -:   46:        // cuento cuantos bytes diferentes hay...
+        4:   47:        cantSignos = 0;
+     1028:   48:        for(i = 0; i < 256; i++)
+        -:   49:        {
+     1024:   50:            if( conteo[i] != 0 ) cantSignos++;
+        -:   51:        }
+        -:   52:
+        -:   53:        // creamos el Arbol con lugar para esa cantidad de signos
+        4:   54:        ht = new HuffmanTree(cantSignos);
+        -:   55:
+        -:   56:        // inicializamos el arbol de Huffman con los signos y sus frecuencias
+        4:   57:        int ind = 0;
+     1028:   58:        for( i = 0;  i < 256;  i++ )
+        -:   59:        {
+     1024:   60:              if( conteo[i] != 0 )
+        -:   61:              {
+     1024:   62:                  ht->setNodo((unsigned char)i , conteo[i], ind);
+     1024:   63:                  ind++;
+        -:   64:              }
+        -:   65:        }
+        -:   66:
+        -:   67:        // armamos el arbol y obtenenos el codigo Huffman de cada signo
+        4:   68:        ht->encode();
+        -:   69:
+        -:   70:        // cantidad de bytes del archivo fuente
+        4:   71:        fseek(fuente, 0, SEEK_END);
+        4:   72:        long tArch = ftell( fuente );
+        -:   73:
+        -:   74:        // guardo en el archivo comprimido informacion para el descompresor...
+        -:   75:
+        -:   76:        // ...empiezo guardando el tamaño del nombre, el nombre y la extension del original...
+        4:   77:        int tf = strlen(f1);
+        4:   78:        fwrite( &tf, sizeof(int), 1, comprimido );
+        4:   79:        fwrite( f1, tf, 1, comprimido );  // no graba el caracter nulo del final...
+        -:   80:
+        -:   81:        // ... luego guardo la longitud en bytes del archivo original...
+        4:   82:        fwrite( &tArch, sizeof(long), 1, comprimido);
+        -:   83:
+        -:   84:        // ... la cantidad de simbolos (o sea, la cantidad de hojas del arbol)...
+        4:   85:        fwrite( &cantSignos, sizeof(int), 1, comprimido );
+        -:   86:
+        -:   87:        // ... ahora la tabla de simbolos tal como esta en el arbol...
+     1028:   88:        for( i = 0; i < cantSignos; i++ )
+        -:   89:        {
+     1024:   90:            unsigned char signo = (unsigned char) ht->getSigno(i);
+     1024:   91:            fwrite( &signo, sizeof(unsigned char), 1, comprimido );
+        -:   92:        }
+        -:   93:
+        -:   94:        // ... ahora el vector que representa al arbol...
+        4:   95:        HuffmanNode *a = ht->getArbol();
+        4:   96:        int n = cantSignos * 2 - 1;  // cantidad total de nodos del arbol
+     2048:   97:        for( i = 0; i < n; i++ )
+        -:   98:        {
+        -:   99:            // ...por cada nodo, guardar todos sus datos...
+     2044:  100:            int f = a[i].getFrecuencia();
+     2044:  101:            fwrite( &f, sizeof(int), 1, comprimido );
+        -:  102:
+     2044:  103:            int p = a[i].getPadre();
+     2044:  104:            fwrite(&p, sizeof(int), 1, comprimido );
+        -:  105:
+     2044:  106:            bool is = a[i].isLeft();
+     2044:  107:            fwrite( &is, sizeof(bool), 1, comprimido );
+        -:  108:
+     2044:  109:            int izq = a[i].getIzquierdo();
+     2044:  110:            fwrite( &izq, sizeof(int), 1, comprimido );
+        -:  111:
+     2044:  112:            int der = a[i].getDerecho();
+     2044:  113:            fwrite( &der, sizeof(int), 1, comprimido );
+        -:  114:        }
+        -:  115:
+        -:  116:        // comienza fase de compresion (por fin...)
+        4:  117:        unsigned char mascara = 0x80;  // el valor 1000 0000
+        4:  118:        unsigned char salida  = 0x00;  // el valor 0000 0000
+        4:  119:        int bit = 0; // en que bit vamos?
+        -:  120:
+        4:  121:        rewind( fuente );   // vuelvo el fp al principio
+        4:  122:        fread( &byte, sizeof(unsigned char), 1, fuente );
+   925380:  123:        while( !feof( fuente ) )
+        -:  124:        {
+        -:  125:
+        -:  126:            // codigo Huffman del caracter tomado
+   462688:  127:            HuffmanCode *hc = ht->getCodigo( byte );
+   462688:  128:            int *v = hc->getCodigo();
+   462688:  129:            int ini = hc->getStartPos();
+        -:  130:
+  4149776:  131:            for( i = ini; i < MAXBITS; i++ )
+        -:  132:            {
+  3687088:  133:                if( v[i] == 1 )
+        -:  134:                {
+        -:  135:                    // si era 1, lo bajamos al byte de salida (si era cero, ni modo...)
+  1906084:  136:                    salida = salida | mascara;
+        -:  137:                }
+  3687088:  138:                mascara = mascara >> 1;  // corremos el uno a la derecha, rellenando con ceros a la izquierda...
+  3687088:  139:                bit++;
+  3687088:  140:                if( bit == 8 )
+        -:  141:                {
+        -:  142:                    //se lleno el byte de salida...
+   460884:  143:                    fwrite( &salida, sizeof(unsigned char), 1, comprimido);
+   460884:  144:                    bit = 0;
+   460884:  145:                    mascara = 0x80;
+   460884:  146:                    salida  = 0x00;
+        -:  147:                }
+        -:  148:            }
+        -:  149:
+   462688:  150:            fread( &byte, sizeof(unsigned char), 1, fuente );
+        -:  151:        }
+        -:  152:
+        4:  153:        if ( bit != 0 )
+        -:  154:        {
+        -:  155:            // grabar el ultimo byte que estaba incompleto
+        4:  156:            fwrite( &salida, sizeof(unsigned char), 1, comprimido);
+        -:  157:        }
+        4:  158:        fclose( comprimido );
+        4:  159:        fclose( fuente );
+        -:  160:}
+        -:  161:
+        -:  162:
+        4:  163:void HuffmanCompressor::descomprimir( string fileName )
+        -:  164:{
+        4:  165:        unsigned int point_pos = fileName.find(".");
+    #####:  166:        if( point_pos == string::npos ) { cout << "El archivo no parece un archivo comprimido..." << endl; getchar(); return; }
+        -:  167:
+        8:  168:        string ext = fileName.substr( point_pos + 1, fileName.length() );
+        4:  169:        if( ext.compare("cmp") != 0 ) { cout << "El archivo no tiene la extension cmp..." << endl; getchar(); return; }
+        -:  170:
+        -:  171:        // abro el archivo comprimido...
+        4:  172:        char * f1 = new char[ fileName.length() ];
+        4:  173:        strcpy( f1, fileName.c_str() );
+        -:  174:
+        4:  175:        FILE * comprimido = fopen(f1, "rb");
+        4:  176:        if( !comprimido ) { cout<<"Error de apertura: " << f1 << endl; getchar(); return; }
+        -:  177:
+        -:  178:        // ... y recupero el nombre del archivo original
+        -:  179:        int tf;
+        4:  180:        fread( &tf, sizeof(int), 1, comprimido );
+        -:  181:
+        4:  182:        char *f2 = new char[tf + 1];
+        4:  183:        fread( f2, tf, 1, comprimido );
+        4:  184:        f2[tf] = '\0';
+        -:  185:
+        -:  186:        // creo el archivo con el nombre del original
+        4:  187:        FILE * original = fopen(f2, "wb");
+        4:  188:        if( !original ) { cout<<"Error de apertura: " << f2 << endl; getchar(); fclose( comprimido ); return; }
+        -:  189:
+        -:  190:        // y ahora, recupero todos los datos que el compresor dejo adelante...
+        -:  191:
+        -:  192:        // ... empezando por el tamaño del archivo original...
+        -:  193:        long tArch;
+        4:  194:        fread( &tArch, sizeof(long), 1, comprimido);
+        -:  195:
+        -:  196:
+        -:  197:        // ... la cantidad de signos de la tabla (o sea, la cantidad de hojas)...
+        4:  198:        fread( &cantSignos, sizeof(int), 1, comprimido);
+        -:  199:
+        -:  200:        // ...creo de nuevo el arbol en memoria...
+        4:  201:        ht = new HuffmanTree(cantSignos);
+        -:  202:
+        -:  203:        // ... y recupero uno a uno los signos originales, guardandolos de nuevo en el arbol...
+        -:  204:        int i;
+     1028:  205:        for( i = 0; i < cantSignos; i++ )
+        -:  206:        {
+        -:  207:            unsigned char signo;
+     1024:  208:            fread( &signo, sizeof(unsigned char), 1, comprimido );
+     1024:  209:            ht->setSigno(signo, i);
+        -:  210:        }
+        -:  211:
+        -:  212:        // ...ahora le toca al vector del arbol...
+        4:  213:        int n = cantSignos * 2 - 1;  // cantidad total de nodos del arbol
+     2048:  214:        for( i = 0; i < n; i++ )
+        -:  215:        {
+        -:  216:            // ...por cada nodo, recuperar todos sus datos y volver a armar el arbol...
+        -:  217:            int f;
+     2044:  218:            fread( &f, sizeof(int), 1, comprimido);       // frecuencia
+        -:  219:
+        -:  220:            int padre;
+     2044:  221:            fread( &padre, sizeof(int), 1, comprimido);   // padre
+        -:  222:
+        -:  223:            bool left;
+     2044:  224:            fread( &left, sizeof(bool), 1, comprimido);   // es izquierdo?
+        -:  225:
+        -:  226:            int hi;
+     2044:  227:            fread( &hi, sizeof(int), 1, comprimido);      // hijo izquierdo
+        -:  228:
+        -:  229:            int hd;
+     2044:  230:            fread( &hd, sizeof(int), 1, comprimido);      // hijo derecho
+        -:  231:
+     4088:  232:            HuffmanNode nh( f, padre, left, hi, hd );
+     2044:  233:            ht->setNodo(nh, i);
+        -:  234:        }
+        -:  235:
+        -:  236:        // y habiendo llegado aca, el descompresor vuelve a pedir que se creen los codigos de Huffman
+        4:  237:        ht->makeCodes();
+        -:  238:
+        -:  239:        // de aca saco el vector que representa al arbol y el indice de la raiz...
+        4:  240:        HuffmanNode *v2 = ht->getArbol();
+        4:  241:        int raiz =  n - 1;  // la raiz esta en la ultima casilla del vector!!!!
+        -:  242:
+        -:  243:        // comienza la fase de descompresion
+        -:  244:        unsigned char aux;             // auxiliar para desenmascarar
+        -:  245:        unsigned char mascara;
+        4:  246:        int bit, nodo = raiz;          // comenzamos desde la raiz y vamos bajando
+        4:  247:        long cantBytes = 0;            // cuantos bytes llevo grabados??
+        -:  248:
+        -:  249:        // leo byte por byte el archivo comprimido... sigo desde donde quedo el file pointer
+        -:  250:        unsigned char car;
+        4:  251:        fread( &car, sizeof(unsigned char), 1, comprimido );
+   921780:  252:        while( !feof(comprimido) )
+        -:  253:        {
+   460888:  254:            mascara = 0x80;
+  4147976:  255:            for( bit = 0; bit < 8 && cantBytes != tArch; bit++ )
+        -:  256:            {
+  3687088:  257:                aux = car & mascara;
+  3687088:  258:                if(aux == mascara)
+        -:  259:                {
+        -:  260:                    // el bit en la posicion "bit" era un uno...
+  1906084:  261:                    nodo = v2[nodo].getDerecho();
+        -:  262:                }
+        -:  263:                else
+        -:  264:                {
+        -:  265:                    // era un cero...
+  1781004:  266:                    nodo = v2[nodo].getIzquierdo();
+        -:  267:                }
+  3687088:  268:                mascara = mascara >> 1;  // corremos el 1 a la derecha y rellenamos con ceros a la izquierda...
+        -:  269:
+  3687088:  270:                if ( v2[nodo].getIzquierdo() == -1 )
+        -:  271:                {
+        -:  272:                    // llegamos a una hoja... grabar el signo que esta en ella
+   462688:  273:                    unsigned char sal = ht->getSigno( nodo );
+   462688:  274:                    fwrite( &sal, sizeof(unsigned char), 1, original );
+   462688:  275:                    cantBytes++;
+        -:  276:
+        -:  277:                    // volver a la raiz
+   462688:  278:                    nodo = raiz;
+        -:  279:                }
+        -:  280:            }
+        -:  281:
+   460888:  282:            fread( &car, sizeof(unsigned char), 1, comprimido );
+        -:  283:        }
+        4:  284:        fclose( original );
+        4:  285:        fclose( comprimido );
+        -:  286:}
+    #####:  287:float HuffmanCompressor :: desafio3 (const char fileName[])
+        -:  288:{
+        -:  289:
+    #####:  290:        FILE *fuente = fopen(fileName, "rb");
+    #####:  291:        if( !fuente ) { cout<<"Error de apertura: " << endl; system("pause"); return 0; }
+        -:  292:
+        -:  293:        // contamos cuantas veces aparece cada byte en el archivo fuente
+        -:  294:        int conteo[256];
+        -:  295:        unsigned char byte;
+    #####:  296:        int t = sizeof(unsigned char);
+        -:  297:
+        -:  298:        // contamos los bytes diferentes que hay en el archivo ...
+        -:  299:        int i;
+    #####:  300:        for(i=0; i<256; i++) conteo[i] = 0;
+        -:  301:
+    #####:  302:        fread(&byte, t, 1, fuente);
+    #####:  303:        while( !feof(fuente) )
+        -:  304:        {
+    #####:  305:            conteo[byte]++;
+    #####:  306:            fread(&byte, t, 1, fuente);
+        -:  307:        }
+        -:  308:
+        -:  309:        // cuento cuantos bytes diferentes hay...
+    #####:  310:        cantSignos = 0;
+    #####:  311:        for(i = 0; i < 256; i++)
+        -:  312:        {
+    #####:  313:            if( conteo[i] != 0 ) cantSignos++;
+        -:  314:        }
+        -:  315:
+        -:  316:        // creamos el Arbol con lugar para esa cantidad de signos
+    #####:  317:        ht = new HuffmanTree(cantSignos);
+        -:  318:
+        -:  319:        // inicializamos el arbol de Huffman con los signos y sus frecuencias
+    #####:  320:        int ind = 0;
+    #####:  321:        for( i = 0;  i < 256;  i++ )
+        -:  322:        {
+    #####:  323:              if( conteo[i] != 0 )
+        -:  324:              {
+    #####:  325:                  ht->setNodo((unsigned char)i , conteo[i], ind);
+    #####:  326:                  ind++; //cantidad de signos en el nuevo vector
+        -:  327:              }
+        -:  328:        }
+        -:  329:        
+        -:  330:        // armamos el arbol y obtenenos el codigo Huffman de cada signo
+    #####:  331:        ht->encode();
+        -:  332:        
+        -:  333:        
+        -:  334:        // cantidad de bytes del archivo fuente
+    #####:  335:        fseek(fuente, 0, SEEK_END);
+    #####:  336:        long tArch = ftell( fuente );
+    #####:  337:        fclose (fuente);
+    #####:  338:        float ac = 0;
+    #####:  339:        for (int i= 0; i<256; i++)
+        -:  340:        {
+    #####:  341:            if (conteo[i]!=0)
+        -:  342:            {
+    #####:  343:                float pi = conteo[i] / (float)tArch;
+        -:  344:                
+    #####:  345:                HuffmanCode *hc = ht->getCodigo((unsigned char) i );
+    #####:  346:                float bi = MAXBITS - hc->getStartPos();
+    #####:  347:                ac = ac + (pi * bi);
+        -:  348:            }
+        -:  349:        }
+        -:  350:    
+    #####:  351:        return ac;
+       36:  352:}

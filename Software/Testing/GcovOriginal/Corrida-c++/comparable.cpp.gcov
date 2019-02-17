@@ -1,0 +1,18 @@
+        -:    0:Source:../../HuffmanOriginal/comparable.cpp
+        -:    0:Programs:42
+        -:    1:/* 
+        -:    2: * File:   comparable.cpp
+        -:    3: * Author: Ing. Valerio Frittelli
+        -:    4: * 
+        -:    5: * Created on 13 de abril de 2010, 06:12
+        -:    6: */
+        -:    7:
+        -:    8:#include "comparable.h"
+        -:    9:
+        -:   10://************ Constructores y Destructor
+     8176:   11:Comparable::Comparable() {
+     8176:   12:}
+        -:   13:
+     4088:   14:Comparable::~Comparable() {
+     4124:   15:}
+        -:   16:

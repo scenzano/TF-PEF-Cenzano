@@ -1,0 +1,31 @@
+        -:    0:Source:../../HuffmanOriginal/main.cpp
+        -:    0:Programs:42
+        -:    1:#include <iostream>
+        -:    2:#include "HuffmanCompressor.h"
+        -:    3:using namespace std;
+        -:    4:
+        6:    5:int main(int argc, char *argv[])
+        -:    6:{
+        6:    7:    HuffmanCompressor *compresor = new HuffmanCompressor();
+        -:    8:    int op;
+       12:    9:    string nombre_archivo = "";
+        -:   10:
+        6:   11:    if(argc < 3)
+        -:   12:    {
+        2:   13:        cout << "Uso: " << endl;
+        2:   14:        cout << "HuffmanCompressor.exe [ comprimir | descomprimir ] [ archivoParaComprimir | archivoParaDescomprimir ]" << endl;
+        -:   15:    }
+        -:   16:    else
+        -:   17:    {
+        4:   18:        if((std::string(argv[1]) == "comprimir"))
+        -:   19:        {
+        2:   20:            compresor->comprimir((std::string(argv[2])));
+        -:   21:        }
+        2:   22:        else if((std::string(argv[1]) == "descomprimir"))
+        -:   23:        {
+        2:   24:            compresor->descomprimir((std::string(argv[2])));
+        -:   25:        }
+        -:   26:    }
+        6:   27:    return 0;
+       18:   28:}
+        -:   29:

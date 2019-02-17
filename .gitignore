@@ -1,9 +1,14 @@
 # Created by https://www.gitignore.io/api/c,c++,sublimetext
 # Edit at https://www.gitignore.io/?templates=c,c++,sublimetext
 
+### Project files
+*.cmp
+
 ### C ###
 # Prerequisites
 *.d
+*.cpp~
+*.h~
 
 # Object files
 *.o

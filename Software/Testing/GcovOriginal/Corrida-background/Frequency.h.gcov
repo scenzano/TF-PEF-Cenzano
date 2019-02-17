@@ -1,0 +1,30 @@
+        -:    0:Source:../../HuffmanOriginal/Frequency.h
+        -:    0:Programs:42
+        -:    1:#include "object.h"
+        -:    2:#include "comparable.h"
+        -:    3:
+        -:    4:#ifndef FREQUENCY_H
+        -:    5:#define	FREQUENCY_H
+        -:    6:
+        -:    7:class Frequency : public Comparable
+        -:    8:{
+        -:    9:        int indice;
+        -:   10:        int frecuencia;
+        -:   11:
+        -:   12:                public:
+        -:   13:                    
+        -:   14:        Frequency();
+        -:   15:        Frequency(int i, int f);
+        -:   16:        virtual ~Frequency();
+        -:   17:
+     2040:   18:        int getIndice() {return indice;}
+        -:   19:        void setIndice(int i) {indice = i;}
+        -:   20:
+        -:   21:        int  getFrecuencia() { return frecuencia; }
+        -:   22:        void setFrecuencia(int x) { frecuencia = x; }
+        -:   23:
+        -:   24:        int compareTo(Object *x);
+        -:   25:};
+        -:   26:
+        -:   27:#endif	/* FREQUENCY_H */
+        -:   28:

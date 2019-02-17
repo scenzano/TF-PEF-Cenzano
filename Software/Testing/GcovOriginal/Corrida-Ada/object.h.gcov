@@ -1,0 +1,24 @@
+        -:    0:Source:../../HuffmanOriginal/object.h
+        -:    0:Programs:42
+        -:    1:#ifndef _OBJECT_H
+        -:    2:#define	_OBJECT_H
+        -:    3:
+        -:    4:#include<iostream>
+        -:    5:#include<string>
+        -:    6:#include<cstdio>
+        -:    7:#include<typeinfo>
+        -:    8:using namespace std;
+        -:    9:
+     2044:   10:class Object
+        -:   11:{
+        -:   12:           public:
+        -:   13:        
+        -:   14:	Object();
+        -:   15:	virtual ~Object();
+        -:   16:	virtual bool equals( Object * otro );
+        -:   17:	virtual string toString();
+        -:   18:	virtual int  hashCode();
+        -:   19:};
+        -:   20:
+        -:   21:#endif	/* _OBJECT_H */
+        -:   22:

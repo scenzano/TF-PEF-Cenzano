@@ -1,0 +1,41 @@
+        -:    0:Source:../../HuffmanOriginal/HuffmanCode.cpp
+        -:    0:Programs:42
+        -:    1:#include "HuffmanCode.h"
+        -:    2:
+    #####:    3:HuffmanCode::HuffmanCode(HuffmanCode *c)
+        -:    4:{
+    #####:    5:    for( int i = c->startPos; i < MAXBITS; i++ )
+        -:    6:    {
+    #####:    7:        bits[i] = c->bits[i];
+        -:    8:    }
+    #####:    9:    startPos = c->startPos;
+    #####:   10:}
+        -:   11:
+    #####:   12:HuffmanCode::~HuffmanCode()
+        -:   13:{
+    #####:   14:}
+        -:   15:
+    16584:   16:void HuffmanCode::setBit(int bit)
+        -:   17:{
+    16584:   18:    if( startPos == 0 )
+        -:   19:    {
+    #####:   20:        cout << "Codigo muy largo";
+    #####:   21:        exit(1);
+        -:   22:    }
+    16584:   23:    startPos--;
+    16584:   24:    bits[startPos] = bit;
+    16584:   25:}
+        -:   26:
+    #####:   27:string HuffmanCode::toString()
+        -:   28:{
+    #####:   29:    string res = "";
+        -:   30:
+    #####:   31:    for(int i = startPos; i < MAXBITS; i++)
+        -:   32:    {
+        -:   33:        char sn[5];
+    #####:   34:        sprintf(sn, "%d", bits[i]);
+    #####:   35:        res.append(sn);
+        -:   36:    }
+        -:   37:
+    #####:   38:    return res;
+       36:   39:}
