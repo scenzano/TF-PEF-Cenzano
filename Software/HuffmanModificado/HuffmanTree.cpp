@@ -140,4 +140,5 @@ int HuffmanTree::buscar(unsigned char x)
         else if( x == signos[i - 6] ) return (i - 6);
         else if( x == signos[i - 7] ) return (i - 7);
     }
+    return -1;
 }
