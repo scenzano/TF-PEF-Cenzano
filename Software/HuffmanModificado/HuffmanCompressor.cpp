@@ -5,6 +5,11 @@ HuffmanCompressor::HuffmanCompressor()
 {
 }
 
+HuffmanCompressor::~HuffmanCompressor()
+{
+    delete ht;
+}
+
 void HuffmanCompressor::comprimir (string fileName)
 {
         //obtengo el nombre del archivo, sin la extension
@@ -184,6 +189,8 @@ void HuffmanCompressor::comprimir (string fileName)
         }
         fclose( comprimido );
         fclose( fuente );
+        delete []f1;
+        delete []f2;
 }
 
 

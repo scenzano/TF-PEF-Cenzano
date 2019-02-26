@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
             compresor->descomprimir((std::string(argv[2])));
         }
     }
+
+    delete compresor;
+
     return 0;
 }
 

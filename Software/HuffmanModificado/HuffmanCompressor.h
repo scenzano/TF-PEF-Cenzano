@@ -15,6 +15,7 @@ class HuffmanCompressor : public Object
         public:
 
     HuffmanCompressor();
+	virtual ~HuffmanCompressor();
     void comprimir(string fileName);
     void descomprimir(string fileName);
 };

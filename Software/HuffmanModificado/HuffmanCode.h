@@ -17,7 +17,7 @@ class HuffmanCode : public Object
              public:
                  
         HuffmanCode() { startPos = MAXBITS; bits = new int[MAXBITS]; }
-	HuffmanCode(HuffmanCode *c);
+		HuffmanCode(HuffmanCode *c);
         virtual ~HuffmanCode();
         int getStartPos() { return startPos; }
         void setBit( int bit );

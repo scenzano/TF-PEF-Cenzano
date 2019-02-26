@@ -26,6 +26,7 @@ HuffmanCode::HuffmanCode(HuffmanCode *c)
 
 HuffmanCode::~HuffmanCode()
 {
+    delete bits;
 }
 
 void HuffmanCode::setBit(int bit)
