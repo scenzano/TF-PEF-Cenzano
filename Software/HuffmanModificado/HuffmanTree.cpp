@@ -127,18 +127,54 @@ int HuffmanTree::buscar(unsigned char x)
 
     for(i = offset - 1; i >= 0; --i)
     {
-        if( x == signos[i] ) return i;
+        if( x == signos[i] )
+        {
+            variable_return = i;
+            break;
+        }
     }
-    for(i = tam - 1; i >=  offset; i-=8)
+    if(variable_return == -1)
     {
-        if( x == signos[i] ) return i;
-        else if( x == signos[i - 1] ) return (i - 1);
-        else if( x == signos[i - 2] ) return (i - 2);
-        else if( x == signos[i - 3] ) return (i - 3);
-        else if( x == signos[i - 4] ) return (i - 4);
-        else if( x == signos[i - 5] ) return (i - 5);
-        else if( x == signos[i - 6] ) return (i - 6);
-        else if( x == signos[i - 7] ) return (i - 7);
+        for(i = tam - 1; i >=  offset; i-=8)
+        {
+            if( x == signos[i] ) return i;
+            else if( x == signos[i - 1] )
+            {
+                variable_return = (i - 1);
+                break;
+            }
+            else if( x == signos[i - 2] )
+            {
+                variable_return = (i - 2);
+                break;
+            }
+            else if( x == signos[i - 3] )
+            {
+                variable_return = (i - 3);
+                break;
+            }
+            else if( x == signos[i - 4] )
+            {
+                variable_return = (i - 4);
+                break;
+            }
+            else if( x == signos[i - 5] )
+            {
+                variable_return = (i - 5);
+                break;
+            }
+            else if( x == signos[i - 6] )
+            {
+                variable_return = (i - 6);
+                break;
+            }
+            else if( x == signos[i - 7] )
+            {
+                variable_return = (i - 7);
+                break;
+            }
+        }
     }
-    return -1;
+    
+    return variable_return;
 }

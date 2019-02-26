@@ -32,9 +32,22 @@ void HuffmanCompressor::comprimir (string fileName)
         unsigned char byte;
         int t = sizeof(unsigned char);
 
+        int offset = 256 % 8;
         // contamos los bytes diferentes que hay en el archivo ...
         int i;
-        for(i=0; i<256; i++) conteo[i] = 0;
+        for(i = offset - 1; i >= 0; --i) conteo[i] = 0;
+
+        for(i = 256 - 1; i >=  offset; i-=8)
+        {
+            conteo[i] = 0;
+            conteo[i - 1] = 0;
+            conteo[i - 2] = 0;
+            conteo[i - 3] = 0;
+            conteo[i - 4] = 0;
+            conteo[i - 5] = 0;
+            conteo[i - 6] = 0;
+            conteo[i - 7] = 0;
+        }
 
         fread(&byte, t, 1, fuente);
         while( !feof(fuente) )
@@ -45,9 +58,22 @@ void HuffmanCompressor::comprimir (string fileName)
 
         // cuento cuantos bytes diferentes hay...
         cantSignos = 0;
-        for(i = 0; i < 256; i++)
+
+        for(i = offset - 1; i >= 0; --i)
         {
             if( conteo[i] != 0 ) cantSignos++;
+        }
+
+        for(i = 256 - 1; i >=  offset; i-=8)
+        {
+            if( conteo[i] != 0 ) cantSignos++;
+            if( conteo[i - 1] != 0 ) cantSignos++;
+            if( conteo[i - 2] != 0 ) cantSignos++;
+            if( conteo[i - 3] != 0 ) cantSignos++;
+            if( conteo[i - 4] != 0 ) cantSignos++;
+            if( conteo[i - 5] != 0 ) cantSignos++;
+            if( conteo[i - 6] != 0 ) cantSignos++;
+            if( conteo[i - 7] != 0 ) cantSignos++;
         }
 
         // creamos el Arbol con lugar para esa cantidad de signos
@@ -55,7 +81,8 @@ void HuffmanCompressor::comprimir (string fileName)
 
         // inicializamos el arbol de Huffman con los signos y sus frecuencias
         int ind = 0;
-        for( i = 0;  i < 256;  i++ )
+
+        for( i = 256 - 1;  i >= 0;  --i )
         {
               if( conteo[i] != 0 )
               {
