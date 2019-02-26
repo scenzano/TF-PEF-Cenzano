@@ -317,4 +317,6 @@ void HuffmanCompressor::descomprimir( string fileName )
         }
         fclose( original );
         fclose( comprimido );
+        delete []f1;
+        delete []f2;
 }
