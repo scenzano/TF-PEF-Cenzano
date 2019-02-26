@@ -1,0 +1,427 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 50.01      0.01     0.01   477032     0.00     0.00  HuffmanNode::getDerecho()
+ 50.01      0.02     0.01        1    10.00    20.00  HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  0.00      0.02     0.00  1367534     0.00     0.00  HuffmanNode::getIzquierdo()
+  0.00      0.02     0.00   115672     0.00     0.00  HuffmanTree::getSigno(int)
+  0.00      0.02     0.00     2566     0.00     0.00  HuffmanNode::isLeft()
+  0.00      0.02     0.00     2566     0.00     0.00  HuffmanNode::getPadre()
+  0.00      0.02     0.00     2055     0.00     0.00  HuffmanCode::setBit(int)
+  0.00      0.02     0.00     1280     0.00     0.00  Object::Object()
+  0.00      0.02     0.00     1022     0.00     0.00  Comparable::Comparable()
+  0.00      0.02     0.00     1022     0.00     0.00  Comparable::~Comparable()
+  0.00      0.02     0.00     1022     0.00     0.00  HuffmanNode::~HuffmanNode()
+  0.00      0.02     0.00     1022     0.00     0.00  Object::~Object()
+  0.00      0.02     0.00      511     0.00     0.00  Comparable::Comparable(Comparable const&)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::setDerecho(int)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::setIzquierdo(int)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::getFrecuencia()
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::setFrecuencia(int)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::setLeft(bool)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::setPadre(int)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::HuffmanNode(HuffmanNode const&)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::HuffmanNode(int, int, bool, int, int)
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanNode::HuffmanNode()
+  0.00      0.02     0.00      511     0.00     0.00  HuffmanTree::setNodo(HuffmanNode, int)
+  0.00      0.02     0.00      511     0.00     0.00  Object::Object(Object const&)
+  0.00      0.02     0.00      256     0.00     0.00  HuffmanCode::HuffmanCode()
+  0.00      0.02     0.00      256     0.00     0.00  HuffmanTree::setSigno(unsigned char, int)
+  0.00      0.02     0.00        2     0.00     0.00  bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10ComparableC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11HuffmanCodeC2EPS_
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11HuffmanNodeC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11HuffmanTreeC2Ei
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN15FilaDePrioridadC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN17HuffmanCompressorC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4HeapC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4NodoC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6ObjectC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9FrequencyC2Ev
+  0.00      0.02     0.00        1     0.00     0.00  _GLOBAL__sub_I_main
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.02     0.00        1     0.00     0.00  HuffmanTree::getArbol()
+  0.00      0.02     0.00        1     0.00     0.00  HuffmanTree::makeCodes()
+  0.00      0.02     0.00        1     0.00     0.00  HuffmanTree::HuffmanTree(int)
+  0.00      0.02     0.00        1     0.00     0.00  HuffmanCompressor::HuffmanCompressor()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 49.99% of 0.02 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.02                 main [1]
+                0.01    0.01       1/1           HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+                0.00    0.00       2/2           bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [34]
+                0.00    0.00       1/1           HuffmanCompressor::HuffmanCompressor() [60]
+-----------------------------------------------
+                0.01    0.01       1/1           main [1]
+[2]    100.0    0.01    0.01       1         HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+                0.01    0.00  476521/477032      HuffmanNode::getDerecho() [3]
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+                0.00    0.00 1367023/1367534     HuffmanNode::getIzquierdo() [11]
+                0.00    0.00  115672/115672      HuffmanTree::getSigno(int) [12]
+                0.00    0.00    1022/1022        HuffmanNode::~HuffmanNode() [19]
+                0.00    0.00     511/511         HuffmanNode::HuffmanNode(int, int, bool, int, int) [29]
+                0.00    0.00     511/511         HuffmanNode::HuffmanNode(HuffmanNode const&) [28]
+                0.00    0.00     256/256         HuffmanTree::setSigno(unsigned char, int) [33]
+                0.00    0.00       1/1           HuffmanTree::HuffmanTree(int) [59]
+                0.00    0.00       1/1           HuffmanTree::makeCodes() [58]
+                0.00    0.00       1/1           HuffmanTree::getArbol() [57]
+-----------------------------------------------
+                0.00    0.00     511/477032      HuffmanTree::setNodo(HuffmanNode, int) [4]
+                0.01    0.00  476521/477032      HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[3]     50.0    0.01    0.00  477032         HuffmanNode::getDerecho() [3]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[4]      0.1    0.00    0.00     511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+                0.00    0.00     511/477032      HuffmanNode::getDerecho() [3]
+                0.00    0.00     511/511         HuffmanNode::getFrecuencia() [24]
+                0.00    0.00     511/511         HuffmanNode::setFrecuencia(int) [25]
+                0.00    0.00     511/2566        HuffmanNode::isLeft() [13]
+                0.00    0.00     511/511         HuffmanNode::setLeft(bool) [26]
+                0.00    0.00     511/511         HuffmanNode::setIzquierdo(int) [23]
+                0.00    0.00     511/1367534     HuffmanNode::getIzquierdo() [11]
+                0.00    0.00     511/511         HuffmanNode::setDerecho(int) [22]
+                0.00    0.00     511/511         HuffmanNode::setPadre(int) [27]
+                0.00    0.00     511/2566        HuffmanNode::getPadre() [14]
+-----------------------------------------------
+                0.00    0.00     511/1367534     HuffmanTree::setNodo(HuffmanNode, int) [4]
+                0.00    0.00 1367023/1367534     HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[11]     0.0    0.00    0.00 1367534         HuffmanNode::getIzquierdo() [11]
+-----------------------------------------------
+                0.00    0.00  115672/115672      HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[12]     0.0    0.00    0.00  115672         HuffmanTree::getSigno(int) [12]
+-----------------------------------------------
+                0.00    0.00     511/2566        HuffmanTree::setNodo(HuffmanNode, int) [4]
+                0.00    0.00    2055/2566        HuffmanTree::makeCodes() [58]
+[13]     0.0    0.00    0.00    2566         HuffmanNode::isLeft() [13]
+-----------------------------------------------
+                0.00    0.00     511/2566        HuffmanTree::setNodo(HuffmanNode, int) [4]
+                0.00    0.00    2055/2566        HuffmanTree::makeCodes() [58]
+[14]     0.0    0.00    0.00    2566         HuffmanNode::getPadre() [14]
+-----------------------------------------------
+                0.00    0.00    2055/2055        HuffmanTree::makeCodes() [58]
+[15]     0.0    0.00    0.00    2055         HuffmanCode::setBit(int) [15]
+-----------------------------------------------
+                0.00    0.00       1/1280        HuffmanCompressor::HuffmanCompressor() [60]
+                0.00    0.00       1/1280        HuffmanTree::HuffmanTree(int) [59]
+                0.00    0.00     256/1280        HuffmanCode::HuffmanCode() [32]
+                0.00    0.00    1022/1280        Comparable::Comparable() [17]
+[16]     0.0    0.00    0.00    1280         Object::Object() [16]
+-----------------------------------------------
+                0.00    0.00     511/1022        HuffmanNode::HuffmanNode() [30]
+                0.00    0.00     511/1022        HuffmanNode::HuffmanNode(int, int, bool, int, int) [29]
+[17]     0.0    0.00    0.00    1022         Comparable::Comparable() [17]
+                0.00    0.00    1022/1280        Object::Object() [16]
+-----------------------------------------------
+                0.00    0.00    1022/1022        HuffmanNode::~HuffmanNode() [19]
+[18]     0.0    0.00    0.00    1022         Comparable::~Comparable() [18]
+                0.00    0.00    1022/1022        Object::~Object() [20]
+-----------------------------------------------
+                0.00    0.00    1022/1022        HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[19]     0.0    0.00    0.00    1022         HuffmanNode::~HuffmanNode() [19]
+                0.00    0.00    1022/1022        Comparable::~Comparable() [18]
+-----------------------------------------------
+                0.00    0.00    1022/1022        Comparable::~Comparable() [18]
+[20]     0.0    0.00    0.00    1022         Object::~Object() [20]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanNode::HuffmanNode(HuffmanNode const&) [28]
+[21]     0.0    0.00    0.00     511         Comparable::Comparable(Comparable const&) [21]
+                0.00    0.00     511/511         Object::Object(Object const&) [31]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+[22]     0.0    0.00    0.00     511         HuffmanNode::setDerecho(int) [22]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+[23]     0.0    0.00    0.00     511         HuffmanNode::setIzquierdo(int) [23]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+[24]     0.0    0.00    0.00     511         HuffmanNode::getFrecuencia() [24]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+[25]     0.0    0.00    0.00     511         HuffmanNode::setFrecuencia(int) [25]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+[26]     0.0    0.00    0.00     511         HuffmanNode::setLeft(bool) [26]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::setNodo(HuffmanNode, int) [4]
+[27]     0.0    0.00    0.00     511         HuffmanNode::setPadre(int) [27]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[28]     0.0    0.00    0.00     511         HuffmanNode::HuffmanNode(HuffmanNode const&) [28]
+                0.00    0.00     511/511         Comparable::Comparable(Comparable const&) [21]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[29]     0.0    0.00    0.00     511         HuffmanNode::HuffmanNode(int, int, bool, int, int) [29]
+                0.00    0.00     511/1022        Comparable::Comparable() [17]
+-----------------------------------------------
+                0.00    0.00     511/511         HuffmanTree::HuffmanTree(int) [59]
+[30]     0.0    0.00    0.00     511         HuffmanNode::HuffmanNode() [30]
+                0.00    0.00     511/1022        Comparable::Comparable() [17]
+-----------------------------------------------
+                0.00    0.00     511/511         Comparable::Comparable(Comparable const&) [21]
+[31]     0.0    0.00    0.00     511         Object::Object(Object const&) [31]
+-----------------------------------------------
+                0.00    0.00     256/256         HuffmanTree::HuffmanTree(int) [59]
+[32]     0.0    0.00    0.00     256         HuffmanCode::HuffmanCode() [32]
+                0.00    0.00     256/1280        Object::Object() [16]
+-----------------------------------------------
+                0.00    0.00     256/256         HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[33]     0.0    0.00    0.00     256         HuffmanTree::setSigno(unsigned char, int) [33]
+-----------------------------------------------
+                0.00    0.00       2/2           main [1]
+[34]     0.0    0.00    0.00       2         bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [34]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[35]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10ComparableC2Ev [35]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [46]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[36]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11HuffmanCodeC2EPS_ [36]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [50]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[37]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11HuffmanNodeC2Ev [37]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [52]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[38]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11HuffmanTreeC2Ei [38]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [53]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[39]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN15FilaDePrioridadC2Ev [39]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [47]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[40]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN17HuffmanCompressorC2Ev [40]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [51]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[41]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4HeapC2Ev [41]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [49]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[42]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4NodoC2Ev [42]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [55]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[43]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6ObjectC2Ev [43]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [56]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[44]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9FrequencyC2Ev [44]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [48]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [137]
+[45]     0.0    0.00    0.00       1         _GLOBAL__sub_I_main [45]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [54]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN10ComparableC2Ev [35]
+[46]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [46]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN15FilaDePrioridadC2Ev [39]
+[47]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [47]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN9FrequencyC2Ev [44]
+[48]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [48]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN4HeapC2Ev [41]
+[49]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [49]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11HuffmanCodeC2EPS_ [36]
+[50]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [50]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN17HuffmanCompressorC2Ev [40]
+[51]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [51]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11HuffmanNodeC2Ev [37]
+[52]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [52]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11HuffmanTreeC2Ei [38]
+[53]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [53]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_main [45]
+[54]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [54]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN4NodoC2Ev [42]
+[55]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [55]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN6ObjectC2Ev [43]
+[56]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [56]
+-----------------------------------------------
+                0.00    0.00       1/1           HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[57]     0.0    0.00    0.00       1         HuffmanTree::getArbol() [57]
+-----------------------------------------------
+                0.00    0.00       1/1           HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[58]     0.0    0.00    0.00       1         HuffmanTree::makeCodes() [58]
+                0.00    0.00    2055/2566        HuffmanNode::isLeft() [13]
+                0.00    0.00    2055/2055        HuffmanCode::setBit(int) [15]
+                0.00    0.00    2055/2566        HuffmanNode::getPadre() [14]
+-----------------------------------------------
+                0.00    0.00       1/1           HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [2]
+[59]     0.0    0.00    0.00       1         HuffmanTree::HuffmanTree(int) [59]
+                0.00    0.00     511/511         HuffmanNode::HuffmanNode() [30]
+                0.00    0.00     256/256         HuffmanCode::HuffmanCode() [32]
+                0.00    0.00       1/1280        Object::Object() [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[60]     0.0    0.00    0.00       1         HuffmanCompressor::HuffmanCompressor() [60]
+                0.00    0.00       1/1280        Object::Object() [16]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [35] _GLOBAL__sub_I__ZN10ComparableC2Ev [53] __static_initialization_and_destruction_0(int, int) [27] HuffmanNode::setPadre(int)
+  [36] _GLOBAL__sub_I__ZN11HuffmanCodeC2EPS_ [54] __static_initialization_and_destruction_0(int, int) [28] HuffmanNode::HuffmanNode(HuffmanNode const&)
+  [37] _GLOBAL__sub_I__ZN11HuffmanNodeC2Ev [55] __static_initialization_and_destruction_0(int, int) [29] HuffmanNode::HuffmanNode(int, int, bool, int, int)
+  [38] _GLOBAL__sub_I__ZN11HuffmanTreeC2Ei [56] __static_initialization_and_destruction_0(int, int) [30] HuffmanNode::HuffmanNode()
+  [39] _GLOBAL__sub_I__ZN15FilaDePrioridadC2Ev [21] Comparable::Comparable(Comparable const&) [19] HuffmanNode::~HuffmanNode()
+  [40] _GLOBAL__sub_I__ZN17HuffmanCompressorC2Ev [17] Comparable::Comparable() [4] HuffmanTree::setNodo(HuffmanNode, int)
+  [41] _GLOBAL__sub_I__ZN4HeapC2Ev [18] Comparable::~Comparable() [57] HuffmanTree::getArbol()
+  [42] _GLOBAL__sub_I__ZN4NodoC2Ev [15] HuffmanCode::setBit(int) [12] HuffmanTree::getSigno(int)
+  [43] _GLOBAL__sub_I__ZN6ObjectC2Ev [32] HuffmanCode::HuffmanCode() [33] HuffmanTree::setSigno(unsigned char, int)
+  [44] _GLOBAL__sub_I__ZN9FrequencyC2Ev [3] HuffmanNode::getDerecho() [58] HuffmanTree::makeCodes()
+  [45] _GLOBAL__sub_I_main    [22] HuffmanNode::setDerecho(int) [59] HuffmanTree::HuffmanTree(int)
+  [46] __static_initialization_and_destruction_0(int, int) [11] HuffmanNode::getIzquierdo() [2] HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  [47] __static_initialization_and_destruction_0(int, int) [23] HuffmanNode::setIzquierdo(int) [60] HuffmanCompressor::HuffmanCompressor()
+  [48] __static_initialization_and_destruction_0(int, int) [24] HuffmanNode::getFrecuencia() [31] Object::Object(Object const&)
+  [49] __static_initialization_and_destruction_0(int, int) [25] HuffmanNode::setFrecuencia(int) [16] Object::Object()
+  [50] __static_initialization_and_destruction_0(int, int) [13] HuffmanNode::isLeft() [20] Object::~Object()
+  [51] __static_initialization_and_destruction_0(int, int) [26] HuffmanNode::setLeft(bool) [34] bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  [52] __static_initialization_and_destruction_0(int, int) [14] HuffmanNode::getPadre()

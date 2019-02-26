@@ -1,0 +1,164 @@
+==16710== Memcheck, a memory error detector
+==16710== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16710== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==16710== Command: ./HuffmanCompressor comprimir Ada.jpg
+==16710== Parent PID: 16666
+==16710== 
+--16710-- 
+--16710-- Valgrind options:
+--16710--    --leak-check=full
+--16710--    --log-file=./ResultadosAda-compresion
+--16710--    -v
+--16710-- Contents of /proc/version:
+--16710--   Linux version 4.15.0-43-generic (buildd@lgw01-amd64-001) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
+--16710-- 
+--16710-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2
+--16710-- Page sizes: currently 4096, max supported 4096
+--16710-- Valgrind library directory: /usr/lib/valgrind
+--16710-- Reading syms from /home/sc/pefShare/FINAL/TF-PEF-Cenzano/TF-PEF-Cenzano/Software/Testing/ValgrindOriginal/HuffmanCompressor
+--16710-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--16710--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--16710--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
+--16710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--16710--   .. CRC is valid
+--16710-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--16710--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--16710--   .. CRC mismatch (computed c25f395c wanted 0a9602a8)
+--16710--    object doesn't have a symbol table
+--16710--    object doesn't have a dynamic symbol table
+--16710-- Scheduler: using generic scheduler lock implementation.
+--16710-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==16710== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-16710-by-sc-on-???
+==16710== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-16710-by-sc-on-???
+==16710== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-16710-by-sc-on-???
+==16710== 
+==16710== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==16710== don't want to do, unless you know exactly what you're doing,
+==16710== or are doing some strange experiment):
+==16710==   /usr/lib/valgrind/../../bin/vgdb --pid=16710 ...command...
+==16710== 
+==16710== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==16710==   /path/to/gdb ./HuffmanCompressor
+==16710== and then give GDB the following command
+==16710==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=16710
+==16710== --pid is optional if only one valgrind process is running
+==16710== 
+--16710-- REDIR: 0x401f2f0 (ld-linux-x86-64.so.2:strlen) redirected to 0x58060901 (???)
+--16710-- REDIR: 0x401f0d0 (ld-linux-x86-64.so.2:index) redirected to 0x5806091b (???)
+--16710-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--16710--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--16710--   .. CRC mismatch (computed 4b63d83e wanted 670599e6)
+--16710--    object doesn't have a symbol table
+--16710-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--16710--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--16710--   .. CRC mismatch (computed a4b37bee wanted 8ad4dc94)
+--16710--    object doesn't have a symbol table
+==16710== WARNING: new redirection conflicts with existing -- ignoring it
+--16710--     old: 0x0401f2f0 (strlen              ) R-> (0000.0) 0x58060901 ???
+--16710--     new: 0x0401f2f0 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--16710-- REDIR: 0x401d360 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--16710-- REDIR: 0x401f830 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--16710-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+--16710--    object doesn't have a symbol table
+--16710-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--16710--    object doesn't have a symbol table
+--16710-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--16710--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--16710--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
+--16710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--16710--   .. CRC is valid
+--16710-- Reading syms from /lib/x86_64-linux-gnu/libm-2.27.so
+--16710--   Considering /lib/x86_64-linux-gnu/libm-2.27.so ..
+--16710--   .. CRC mismatch (computed 7feae033 wanted b29b2508)
+--16710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.27.so ..
+--16710--   .. CRC is valid
+--16710-- REDIR: 0x547bc70 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547ad40 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bf50 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547a790 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547ad70 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547d7c0 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bde0 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bc10 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547ad00 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547a800 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bd40 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x54990f0 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547aca0 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547a870 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bfa0 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547a840 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547c0e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547ada0 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547a7c0 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547ac70 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x54856c0 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bff0 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bbe0 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x5499eb0 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547b050 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bf20 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547bef0 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547d7f0 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x547c040 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16710-- REDIR: 0x556b3c0 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--16710-- REDIR: 0x5474070 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--16710-- REDIR: 0x556b590 (libc.so.6:__strlen_avx2) redirected to 0x4c32cf0 (strlen)
+--16710-- REDIR: 0x5567ba0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4c35e00 (bcmp)
+--16710-- REDIR: 0x5546d60 (libc.so.6:__strcmp_ssse3) redirected to 0x4c33da0 (strcmp)
+--16710-- REDIR: 0x4ecf190 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4c30110 (operator new(unsigned long))
+--16710-- REDIR: 0x556bad0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4c366e0 (memmove)
+--16710-- REDIR: 0x5567420 (libc.so.6:__memchr_avx2) redirected to 0x4c33f80 (memchr)
+--16710-- REDIR: 0x4ecf240 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c30830 (operator new[](unsigned long))
+--16710-- REDIR: 0x5558950 (libc.so.6:__strcpy_ssse3) redirected to 0x4c32dd0 (strcpy)
+--16710-- REDIR: 0x547b590 (libc.so.6:__GI_strstr) redirected to 0x4c37760 (__strstr_sse2)
+--16710-- REDIR: 0x4ecf250 (libstdc++.so.6:operator new[](unsigned long, std::nothrow_t const&)) redirected to 0x4c30ac0 (operator new[](unsigned long, std::nothrow_t const&))
+--16710-- REDIR: 0x4ecd310 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c316d0 (operator delete[](void*))
+--16710-- REDIR: 0x4ecd2e0 (libstdc++.so.6:operator delete(void*)) redirected to 0x4c311d0 (operator delete(void*))
+--16710-- REDIR: 0x5474950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+--16710-- REDIR: 0x556bab0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4c37130 (mempcpy)
+==16710== 
+==16710== HEAP SUMMARY:
+==16710==     in use at exit: 212,232 bytes in 1,027 blocks
+==16710==   total heap usage: 1,037 allocs, 10 frees, 301,464 bytes allocated
+==16710== 
+==16710== Searching for pointers to 1,027 not-freed blocks
+==16710== Checked 111,272 bytes
+==16710== 
+==16710== 8 bytes in 1 blocks are definitely lost in loss record 1 of 8
+==16710==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16710==    by 0x10B6B6: HuffmanCompressor::comprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:17)
+==16710==    by 0x10DC0D: main (main.cpp:20)
+==16710== 
+==16710== 8 bytes in 1 blocks are definitely lost in loss record 2 of 8
+==16710==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16710==    by 0x10B712: HuffmanCompressor::comprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:21)
+==16710==    by 0x10DC0D: main (main.cpp:20)
+==16710== 
+==16710== 4,080 bytes in 255 blocks are definitely lost in loss record 3 of 8
+==16710==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16710==    by 0x10D545: HuffmanTree::makeTree() (HuffmanTree.cpp:90)
+==16710==    by 0x10D2D7: HuffmanTree::encode() (HuffmanTree.cpp:50)
+==16710==    by 0x10BA01: HuffmanCompressor::comprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:68)
+==16710==    by 0x10DC0D: main (main.cpp:20)
+==16710== 
+==16710== 4,096 bytes in 256 blocks are definitely lost in loss record 4 of 8
+==16710==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16710==    by 0x10D343: HuffmanTree::makeTree() (HuffmanTree.cpp:60)
+==16710==    by 0x10D2D7: HuffmanTree::encode() (HuffmanTree.cpp:50)
+==16710==    by 0x10BA01: HuffmanCompressor::comprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:68)
+==16710==    by 0x10DC0D: main (main.cpp:20)
+==16710== 
+==16710== 204,040 (24 direct, 204,016 indirect) bytes in 1 blocks are definitely lost in loss record 8 of 8
+==16710==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16710==    by 0x10DAB5: main (main.cpp:7)
+==16710== 
+==16710== LEAK SUMMARY:
+==16710==    definitely lost: 8,216 bytes in 514 blocks
+==16710==    indirectly lost: 204,016 bytes in 513 blocks
+==16710==      possibly lost: 0 bytes in 0 blocks
+==16710==    still reachable: 0 bytes in 0 blocks
+==16710==         suppressed: 0 bytes in 0 blocks
+==16710== 
+==16710== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+==16710== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)

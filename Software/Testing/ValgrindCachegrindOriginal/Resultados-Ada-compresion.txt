@@ -1,0 +1,81 @@
+==17604== Cachegrind, a cache and branch-prediction profiler
+==17604== Copyright (C) 2002-2017, and GNU GPL'd, by Nicholas Nethercote et al.
+==17604== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==17604== Command: ./HuffmanCompressor comprimir Ada.jpg
+==17604== 
+--17604-- Valgrind options:
+--17604--    -v
+--17604--    --tool=cachegrind
+--17604--    --cache-sim=yes
+--17604-- Contents of /proc/version:
+--17604--   Linux version 4.15.0-43-generic (buildd@lgw01-amd64-001) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
+--17604-- 
+--17604-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2
+--17604-- Page sizes: currently 4096, max supported 4096
+--17604-- Valgrind library directory: /usr/lib/valgrind
+--17604-- warning: L3 cache found, using its data for the LL simulation.
+==17604== Cache configuration used:
+==17604==   I1: 32,768 B, 8-way, 64 B lines
+==17604==   D1: 32,768 B, 8-way, 64 B lines
+==17604==   LL: 4,194,304 B, 16-way, 64 B lines
+--17604-- Reading syms from /home/sc/pefShare/FINAL/TF-PEF-Cenzano/TF-PEF-Cenzano/Software/Testing/ValgrindCachegrindOriginal/HuffmanCompressor
+--17604-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--17604--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--17604--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
+--17604--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--17604--   .. CRC is valid
+--17604-- Reading syms from /usr/lib/valgrind/cachegrind-amd64-linux
+--17604--   Considering /usr/lib/valgrind/cachegrind-amd64-linux ..
+--17604--   .. CRC mismatch (computed 6dd46b89 wanted 2ec6bcad)
+--17604--    object doesn't have a symbol table
+--17604--    object doesn't have a dynamic symbol table
+--17604-- Scheduler: using generic scheduler lock implementation.
+==17604== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-17604-by-sc-on-???
+==17604== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-17604-by-sc-on-???
+==17604== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-17604-by-sc-on-???
+==17604== 
+==17604== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==17604== don't want to do, unless you know exactly what you're doing,
+==17604== or are doing some strange experiment):
+==17604==   /usr/lib/valgrind/../../bin/vgdb --pid=17604 ...command...
+==17604== 
+==17604== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==17604==   /path/to/gdb ./HuffmanCompressor
+==17604== and then give GDB the following command
+==17604==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=17604
+==17604== --pid is optional if only one valgrind process is running
+==17604== 
+--17604-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--17604--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--17604--   .. CRC mismatch (computed 4b63d83e wanted 670599e6)
+--17604--    object doesn't have a symbol table
+--17604-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+--17604--    object doesn't have a symbol table
+--17604-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--17604--    object doesn't have a symbol table
+--17604-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--17604--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--17604--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
+--17604--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--17604--   .. CRC is valid
+--17604-- Reading syms from /lib/x86_64-linux-gnu/libm-2.27.so
+--17604--   Considering /lib/x86_64-linux-gnu/libm-2.27.so ..
+--17604--   .. CRC mismatch (computed 7feae033 wanted b29b2508)
+--17604--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.27.so ..
+--17604--   .. CRC is valid
+==17604== 
+==17604== I   refs:      35,363,842
+==17604== I1  misses:         2,148
+==17604== LLi misses:         2,005
+==17604== I1  miss rate:       0.01%
+==17604== LLi miss rate:       0.01%
+==17604== 
+==17604== D   refs:      20,581,526  (18,612,550 rd   + 1,968,976 wr)
+==17604== D1  misses:        27,157  (    22,827 rd   +     4,330 wr)
+==17604== LLd misses:        10,868  (     8,115 rd   +     2,753 wr)
+==17604== D1  miss rate:        0.1% (       0.1%     +       0.2%  )
+==17604== LLd miss rate:        0.1% (       0.0%     +       0.1%  )
+==17604== 
+==17604== LL refs:           29,305  (    24,975 rd   +     4,330 wr)
+==17604== LL misses:         12,873  (    10,120 rd   +     2,753 wr)
+==17604== LL miss rate:         0.0% (       0.0%     +       0.1%  )
