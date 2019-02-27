@@ -1,0 +1,19 @@
+        -:    0:Source:../../HuffmanModificado/comparable.h
+        -:    0:Programs:17
+        -:    1:#ifndef _COMPARABLE_H
+        -:    2:#define	_COMPARABLE_H
+        -:    3:
+        -:    4:#include<iostream>
+        -:    5:#include "object.h"
+        -:    6:
+     1022:    7:class Comparable : public Object
+        -:    8:{
+        -:    9:            public:
+        -:   10:        
+        -:   11:        Comparable();
+        -:   12:        virtual ~Comparable();
+        -:   13:	virtual int compareTo(Object *otro)=0;
+        -:   14:};
+        -:   15:
+        -:   16:#endif	/* _COMPARABLE_H */
+        -:   17:

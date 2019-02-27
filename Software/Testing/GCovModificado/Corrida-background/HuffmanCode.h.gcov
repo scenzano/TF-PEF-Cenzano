@@ -1,0 +1,29 @@
+        -:    0:Source:../../HuffmanModificado/HuffmanCode.h
+        -:    0:Programs:17
+        -:    1:#ifndef _HUFFMANCODE_H
+        -:    2:#define	_HUFFMANCODE_H
+        -:    3:
+        -:    4:#include <iostream>
+        -:    5:#include <stdlib.h>
+        -:    6:#include <string.h>
+        -:    7:#include "object.h"
+        -:    8:using namespace std;
+        -:    9:
+        -:   10:#define MAXBITS 175
+        -:   11:
+        -:   12:class HuffmanCode : public Object 
+        -:   13:{             
+        -:   14:        int * bits;	// aca guardamos los bits, de atras hacia adelante
+        -:   15:        int startPos;   // indica donde comienza la cadena de bits
+        -:   16:
+        -:   17:             public:
+        -:   18:                 
+     1024:   19:        HuffmanCode() { startPos = MAXBITS; bits = new int[MAXBITS]; }
+        -:   20:		HuffmanCode(HuffmanCode *c);
+        -:   21:        virtual ~HuffmanCode();
+   231344:   22:        int getStartPos() { return startPos; }
+        -:   23:        void setBit( int bit );
+   231344:   24:        int  * getCodigo() { return bits; }
+        -:   25:};
+        -:   26:
+        -:   27:#endif /* _HUFFMANCODE_H */

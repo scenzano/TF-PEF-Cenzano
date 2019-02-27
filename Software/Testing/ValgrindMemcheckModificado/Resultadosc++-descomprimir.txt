@@ -1,0 +1,209 @@
+==3918== Memcheck, a memory error detector
+==3918== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3918== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==3918== Command: ./HuffmanCompressor descomprimir c++.cmp
+==3918== Parent PID: 3759
+==3918== 
+--3918-- 
+--3918-- Valgrind options:
+--3918--    --leak-check=full
+--3918--    --log-file=./Resultadosc++-descomprimir.txt
+--3918--    -v
+--3918-- Contents of /proc/version:
+--3918--   Linux version 4.15.0-43-generic (buildd@lgw01-amd64-001) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
+--3918-- 
+--3918-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2
+--3918-- Page sizes: currently 4096, max supported 4096
+--3918-- Valgrind library directory: /usr/lib/valgrind
+--3918-- Reading syms from /home/sc/pefShare/FINAL/TF-PEF-Cenzano/TF-PEF-Cenzano/Software/Testing/ValgrindMemcheckModificado/HuffmanCompressor
+--3918-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--3918--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--3918--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
+--3918--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--3918--   .. CRC is valid
+--3918-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--3918--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--3918--   .. CRC mismatch (computed c25f395c wanted 0a9602a8)
+--3918--    object doesn't have a symbol table
+--3918--    object doesn't have a dynamic symbol table
+--3918-- Scheduler: using generic scheduler lock implementation.
+--3918-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==3918== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-3918-by-sc-on-???
+==3918== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-3918-by-sc-on-???
+==3918== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-3918-by-sc-on-???
+==3918== 
+==3918== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3918== don't want to do, unless you know exactly what you're doing,
+==3918== or are doing some strange experiment):
+==3918==   /usr/lib/valgrind/../../bin/vgdb --pid=3918 ...command...
+==3918== 
+==3918== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3918==   /path/to/gdb ./HuffmanCompressor
+==3918== and then give GDB the following command
+==3918==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=3918
+==3918== --pid is optional if only one valgrind process is running
+==3918== 
+--3918-- REDIR: 0x401f2f0 (ld-linux-x86-64.so.2:strlen) redirected to 0x58060901 (???)
+--3918-- REDIR: 0x401f0d0 (ld-linux-x86-64.so.2:index) redirected to 0x5806091b (???)
+--3918-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--3918--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--3918--   .. CRC mismatch (computed 4b63d83e wanted 670599e6)
+--3918--    object doesn't have a symbol table
+--3918-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--3918--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--3918--   .. CRC mismatch (computed a4b37bee wanted 8ad4dc94)
+--3918--    object doesn't have a symbol table
+==3918== WARNING: new redirection conflicts with existing -- ignoring it
+--3918--     old: 0x0401f2f0 (strlen              ) R-> (0000.0) 0x58060901 ???
+--3918--     new: 0x0401f2f0 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--3918-- REDIR: 0x401d360 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--3918-- REDIR: 0x401f830 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--3918-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+--3918--    object doesn't have a symbol table
+--3918-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--3918--    object doesn't have a symbol table
+--3918-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--3918--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--3918--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
+--3918--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--3918--   .. CRC is valid
+--3918-- Reading syms from /lib/x86_64-linux-gnu/libm-2.27.so
+--3918--   Considering /lib/x86_64-linux-gnu/libm-2.27.so ..
+--3918--   .. CRC mismatch (computed 7feae033 wanted b29b2508)
+--3918--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.27.so ..
+--3918--   .. CRC is valid
+--3918-- REDIR: 0x547bc70 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547ad40 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bf50 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547a790 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547ad70 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547d7c0 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bde0 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bc10 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547ad00 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547a800 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bd40 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x54990f0 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547aca0 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547a870 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bfa0 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547a840 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547c0e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547ada0 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547a7c0 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547ac70 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x54856c0 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bff0 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bbe0 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x5499eb0 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547b050 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bf20 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547bef0 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547d7f0 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x547c040 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--3918-- REDIR: 0x556b3c0 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--3918-- REDIR: 0x5474070 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--3918-- REDIR: 0x556b590 (libc.so.6:__strlen_avx2) redirected to 0x4c32cf0 (strlen)
+--3918-- REDIR: 0x5567ba0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4c35e00 (bcmp)
+--3918-- REDIR: 0x5546d60 (libc.so.6:__strcmp_ssse3) redirected to 0x4c33da0 (strcmp)
+--3918-- REDIR: 0x4ecf190 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4c30110 (operator new(unsigned long))
+--3918-- REDIR: 0x556bad0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4c366e0 (memmove)
+--3918-- REDIR: 0x5567420 (libc.so.6:__memchr_avx2) redirected to 0x4c33f80 (memchr)
+--3918-- REDIR: 0x4ecf240 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c30830 (operator new[](unsigned long))
+--3918-- REDIR: 0x5558950 (libc.so.6:__strcpy_ssse3) redirected to 0x4c32dd0 (strcpy)
+==3918== Invalid write of size 1
+==3918==    at 0x4C32E0D: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10BC3E: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:207)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918==  Address 0x5b7dce7 is 0 bytes after a block of size 7 alloc'd
+==3918==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10BC13: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:206)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918== 
+==3918== Syscall param openat(filename) points to unaddressable byte(s)
+==3918==    at 0x54ECC8E: open (open64.c:47)
+==3918==    by 0x5469589: _IO_file_open (fileops.c:189)
+==3918==    by 0x5469589: _IO_file_fopen@@GLIBC_2.2.5 (fileops.c:281)
+==3918==    by 0x545BEA9: __fopen_internal (iofopen.c:78)
+==3918==    by 0x545BEA9: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==3918==    by 0x10BC54: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:209)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918==  Address 0x5b7dce7 is 0 bytes after a block of size 7 alloc'd
+==3918==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10BC13: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:206)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918== 
+--3918-- REDIR: 0x547b590 (libc.so.6:__GI_strstr) redirected to 0x4c37760 (__strstr_sse2)
+--3918-- REDIR: 0x556bab0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4c37130 (mempcpy)
+--3918-- REDIR: 0x5474950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+--3918-- REDIR: 0x4ecd310 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c316d0 (operator delete[](void*))
+--3918-- REDIR: 0x4ecd2e0 (libstdc++.so.6:operator delete(void*)) redirected to 0x4c311d0 (operator delete(void*))
+==3918== Mismatched free() / delete / delete []
+==3918==    at 0x4C3123B: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10ADB8: HuffmanCode::~HuffmanCode() (HuffmanCode.cpp:29)
+==3918==    by 0x10ADDF: HuffmanCode::~HuffmanCode() (HuffmanCode.cpp:30)
+==3918==    by 0x10C85D: HuffmanTree::~HuffmanTree() (HuffmanTree.cpp:17)
+==3918==    by 0x10C8CF: HuffmanTree::~HuffmanTree() (HuffmanTree.cpp:19)
+==3918==    by 0x10AF29: HuffmanCompressor::~HuffmanCompressor() (HuffmanCompressor.cpp:10)
+==3918==    by 0x10AF51: HuffmanCompressor::~HuffmanCompressor() (HuffmanCompressor.cpp:11)
+==3918==    by 0x10D50B: main (main.cpp:28)
+==3918==  Address 0x5b83c30 is 0 bytes inside a block of size 700 alloc'd
+==3918==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10D123: HuffmanCode::HuffmanCode() (HuffmanCode.h:19)
+==3918==    by 0x10C72E: HuffmanTree::HuffmanTree(int) (HuffmanTree.cpp:9)
+==3918==    by 0x10BE15: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:235)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918== 
+==3918== 
+==3918== HEAP SUMMARY:
+==3918==     in use at exit: 0 bytes in 0 blocks
+==3918==   total heap usage: 521 allocs, 521 frees, 286,055 bytes allocated
+==3918== 
+==3918== All heap blocks were freed -- no leaks are possible
+==3918== 
+==3918== ERROR SUMMARY: 258 errors from 3 contexts (suppressed: 0 from 0)
+==3918== 
+==3918== 1 errors in context 1 of 3:
+==3918== Syscall param openat(filename) points to unaddressable byte(s)
+==3918==    at 0x54ECC8E: open (open64.c:47)
+==3918==    by 0x5469589: _IO_file_open (fileops.c:189)
+==3918==    by 0x5469589: _IO_file_fopen@@GLIBC_2.2.5 (fileops.c:281)
+==3918==    by 0x545BEA9: __fopen_internal (iofopen.c:78)
+==3918==    by 0x545BEA9: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==3918==    by 0x10BC54: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:209)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918==  Address 0x5b7dce7 is 0 bytes after a block of size 7 alloc'd
+==3918==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10BC13: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:206)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918== 
+==3918== 
+==3918== 1 errors in context 2 of 3:
+==3918== Invalid write of size 1
+==3918==    at 0x4C32E0D: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10BC3E: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:207)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918==  Address 0x5b7dce7 is 0 bytes after a block of size 7 alloc'd
+==3918==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10BC13: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:206)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918== 
+==3918== 
+==3918== 256 errors in context 3 of 3:
+==3918== Mismatched free() / delete / delete []
+==3918==    at 0x4C3123B: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10ADB8: HuffmanCode::~HuffmanCode() (HuffmanCode.cpp:29)
+==3918==    by 0x10ADDF: HuffmanCode::~HuffmanCode() (HuffmanCode.cpp:30)
+==3918==    by 0x10C85D: HuffmanTree::~HuffmanTree() (HuffmanTree.cpp:17)
+==3918==    by 0x10C8CF: HuffmanTree::~HuffmanTree() (HuffmanTree.cpp:19)
+==3918==    by 0x10AF29: HuffmanCompressor::~HuffmanCompressor() (HuffmanCompressor.cpp:10)
+==3918==    by 0x10AF51: HuffmanCompressor::~HuffmanCompressor() (HuffmanCompressor.cpp:11)
+==3918==    by 0x10D50B: main (main.cpp:28)
+==3918==  Address 0x5b83c30 is 0 bytes inside a block of size 700 alloc'd
+==3918==    at 0x4C3089F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3918==    by 0x10D123: HuffmanCode::HuffmanCode() (HuffmanCode.h:19)
+==3918==    by 0x10C72E: HuffmanTree::HuffmanTree(int) (HuffmanTree.cpp:9)
+==3918==    by 0x10BE15: HuffmanCompressor::descomprimir(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (HuffmanCompressor.cpp:235)
+==3918==    by 0x10D4C9: main (main.cpp:24)
+==3918== 
+==3918== ERROR SUMMARY: 258 errors from 3 contexts (suppressed: 0 from 0)

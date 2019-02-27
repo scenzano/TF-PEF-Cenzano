@@ -1,0 +1,309 @@
+        -:    0:Source:../../HuffmanModificado/Heap.cpp
+        -:    0:Programs:17
+        -:    1:#include "Heap.h"
+        -:    2:
+        -:    3:/*
+        -:    4: * Crea un Heap vacio, orientado a la obtencion rapida del menor de n
+        -:    5: * elementos (un heap ascendente: el menor en la raiz).
+        -:    6: */
+        2:    7:Heap::Heap()
+        -:    8:{
+        2:    9:    init(100, true);
+        2:   10:}
+        -:   11:
+        -:   12:/*
+        -:   13: * Crea un Heap vacio, con capacidad inicial para n componentes, orientado a
+        -:   14: * la obtencion rapida del menor de esos elementos (un heap ascendente: el menor
+        -:   15: * en la raiz).
+        -:   16: * @param n la capacidad inicial del heap.
+        -:   17: */
+    #####:   18:Heap::Heap(int n)
+        -:   19:{
+    #####:   20:    init(n, true);
+    #####:   21:}
+        -:   22:
+        -:   23:/*
+        -:   24: * Crea un Heap vacio, con capacidad inicial para 100 componentes. El tipo de heap
+        -:   25: * a crear depende del parametro t: si t = true, el heap sera ascendente (orientado a la
+        -:   26: * obtencion rapida del menor), si t = false entonces sera descendente (orientado a
+        -:   27: * la obtencion rapida del mayor)..
+        -:   28: * @param t el tipo de heap a crear (true: ascendente - false: descendente)
+        -:   29: */
+    #####:   30:Heap::Heap(bool t)
+        -:   31:{
+    #####:   32:    init(100, t);
+    #####:   33:}
+        -:   34:
+        -:   35:/*
+        -:   36: * Crea un Heap vacio, con capacidad inicial para n componentes. El tipo de heap a
+        -:   37: * crear depende del parametro t: si t = true, el heap sera ascendente (orientado a la
+        -:   38: * obtencion rapida del menor), si t = false entonces sera descendente (orientado a
+        -:   39: * la obtencion rapida del mayor).
+        -:   40: * @param n la capacidad inicial del heap.
+        -:   41: * @param t el tipo de heap a crear (true: ascendente - false: descendente)
+        -:   42: */
+    #####:   43:Heap::Heap(int n, bool t)
+        -:   44:{
+    #####:   45:    init(n, t);
+    #####:   46:}
+        -:   47:
+        -:   48:/*
+        -:   49: * Destructor. Libera la memoria ocupada por el heap.
+        -:   50: */
+        6:   51:Heap::~Heap()
+        -:   52:{
+        2:   53:    delete []heap;
+        4:   54:}
+        -:   55:
+        -:   56:/*
+        -:   57: * Inserta un nuevo objeto en el heap. Se admiten repeticiones. La insercion se realiza
+        -:   58: * con tiempo de ejecucion de O(log(n)), siendo n la cantidad de elementos del heap.
+        -:   59: * @param data el objeto a insertar.
+        -:   60: */
+     1022:   61:void Heap::add(Comparable *data)
+        -:   62:{
+     1022:   63:    if( ! isHomogeneus(data) ) return;
+        -:   64:
+     1022:   65:    int n = capacity;
+     1022:   66:    if(count == n) adjustCapacity(2*n);
+        -:   67:
+     1022:   68:    int s = count;
+     1022:   69:    heap[s] = data;
+     2290:   70:    while(s != 0)
+        -:   71:    {
+     1640:   72:        int f = (s - 1) / 2;
+        -:   73:
+     1640:   74:        if( ! valid_change(s, f) ) break;
+        -:   75:
+      634:   76:        Comparable *aux = heap[s];
+      634:   77:        heap[s] = heap[f];
+      634:   78:        heap[f] = aux;
+      634:   79:        s = f;
+        -:   80:    }
+        -:   81:
+     1022:   82:    count++;
+        -:   83:}
+        -:   84:
+        -:   85:/*
+        -:   86: * Remueve todos los elementos del heap y lo deja vacio. La capacidad vuelve
+        -:   87: * al valor de la capacidad con que inicialmente fue creado el heap. El tipo 
+        -:   88: * de heap (ascendente o descendente) se mantiene igual al que se tenia antes 
+        -:   89: * de invocar a clear.
+        -:   90: */
+    #####:   91:void Heap::clear()
+        -:   92:{
+    #####:   93:    delete [] heap;
+        -:   94:
+    #####:   95:    heap = new (nothrow) Comparable * [initial_capacity];
+    #####:   96:    if( ! heap )
+        -:   97:    {
+    #####:   98:        cout << "Memoria insuficiente..." << endl;
+    #####:   99:        system("pause");
+    #####:  100:        exit(1);
+        -:  101:    }
+        -:  102:
+    #####:  103:    capacity = initial_capacity;
+    #####:  104:    count = 0;
+    #####:  105:}
+        -:  106:
+        -:  107:/*
+        -:  108: * Retorna el elemento de la cima del Heap, sin removerlo. Si el Heap
+        -:  109: * es de tipo ascendente, el objeto retornado sera el menor del heap,
+        -:  110: * y si el heap es descendente, el objeto retornado sera el mayor. Si
+        -:  111: * el heap esta vacio, retorna null;
+        -:  112: */
+    #####:  113:Comparable * Heap::get()
+        -:  114:{
+    #####:  115:    if(isEmpty()) return 0;
+    #####:  116:    return heap[0];
+        -:  117:}
+        -:  118:
+        -:  119:/*
+        -:  120: * Permite determinar si el Heap esta vacio.
+        -:  121: * @return true si el Heap esta vacio.
+        -:  122: */
+     1020:  123:bool Heap::isEmpty()
+        -:  124:{
+     1020:  125:    return (count == 0);
+        -:  126:}
+        -:  127:
+        -:  128:/*
+        -:  129: * Obtiene y retorna el elemento de la cima del heap. Si el heap es de
+        -:  130: * tipo ascendente, ese elemento sera el menor del heap. En caso contrario
+        -:  131: * sera el mayor. Rearma el heap con los elementos restantes, de forma que
+        -:  132: * luego de terminada la operacion, la cima vuelve a contener al menor (o al
+        -:  133: * mayor) de los elementos que quedaban, y la cantidad de elementos se reduce
+        -:  134: * en uno. Si el heap esta vacio, retorna null. Tiempo de ejecucion esperado
+        -:  135: * (en el peor caso): O(log(n)).
+        -:  136: * @return el elemento menor (o el mayor) del heap.
+        -:  137: */
+     1020:  138:Comparable * Heap::remove()
+        -:  139:{
+     1020:  140:    if(isEmpty()) return 0;
+        -:  141:
+     1020:  142:    Comparable *x = heap[0];
+        -:  143:
+     1020:  144:    heap[0] = heap[count - 1];
+     1020:  145:    count--;
+        -:  146:
+        -:  147:    // si sobra demasiado lugar, achicar el vector...
+     1020:  148:    int n = capacity;
+     1020:  149:    int ic = initial_capacity;
+     1020:  150:    if(n/2 >= ic && count > ic && count < (n/2) * 0.9) adjustCapacity(n/2);
+        -:  151:
+     1020:  152:    int f = 0;
+    12216:  153:    while(f < count)
+        -:  154:    {
+        -:  155:        // calcular direcciones del hijo izquierdo (sl) y el derecho (sr)...
+     6616:  156:        int sl = f * 2 + 1;
+     6616:  157:        int sr = sl + 1;
+        -:  158:
+        -:  159:        // si no hay hijos, cortar y terminar...
+     6616:  160:        if(sl >= count) break;
+        -:  161:
+        -:  162:        // ...guardar en s el indice del hijo por el que se debe bajar...
+     5698:  163:        int s = sl;
+     5698:  164:        if(sr < count && !optimal_left(sl, sr) ) s = sr;
+        -:  165:
+        -:  166:        // si ese hijo no debe cambiar de lugar con el padre, cortar y terminar...
+     5698:  167:        if( ! valid_change(s, f) ) break;
+        -:  168:
+        -:  169:        // ... caso contrario, intercambiar padre (heap[f]) con el hijo correcto (heap[s])...
+     5598:  170:           Comparable *aux = heap[f];
+     5598:  171:           heap[f] = heap[s];
+     5598:  172:           heap[s] = aux;
+        -:  173:
+        -:  174:        // ...seguir desde el hijo...
+     5598:  175:        f = s;
+        -:  176:    }
+        -:  177:
+        -:  178:    // ... y devolver el elemento que estaba originalmente en la cima...
+     1020:  179:    return x;
+        -:  180:}
+        -:  181:
+        -:  182:
+        -:  183:/*
+        -:  184: * Retorna la cantidad de elementos contenidos en el heap.
+        -:  185: * @return la cantidad de elementos del heap.
+        -:  186: */
+    #####:  187:int Heap::size()
+        -:  188:{
+    #####:  189:    return count;
+        -:  190:}
+        -:  191:
+        -:  192:/*
+        -:  193: * Retorna el tipo de Heap: true si es ascendente, false si es descendente.
+        -:  194: * @return true: el heap es ascendente - false: es descendente.
+        -:  195: */
+    #####:  196:bool Heap::isAscendent()
+        -:  197:{
+    #####:  198:    return ascendent;
+        -:  199:}
+        -:  200:
+        -:  201:/*
+        -:  202: * Privado. Ajusta la capacidad del arreglo al nuevo valor nc. Este valor puede ser
+        -:  203: * menor o mayor al anterior valor de capacidad. El metodo no controla si
+        -:  204: * la operacion es valida para la cantidad de elementos en el heap original.
+        -:  205: */
+        6:  206:void Heap::adjustCapacity( int nc )
+        -:  207:{
+        6:  208:    int n = capacity;
+        -:  209:
+        -:  210:    // cuantos elementos debo trasladar?
+        6:  211:    int cant = n;
+        6:  212:    if(nc < n) cant = count;
+        -:  213:
+        -:  214:    // hacer el traslado...
+        6:  215:    Comparable **newheap = new (nothrow) Comparable *[nc];
+        6:  216:    if( ! newheap )
+        -:  217:    {
+    #####:  218:        cout << "Memoria insuficiente..." << endl;
+    #####:  219:        system("pause");
+    #####:  220:        exit(1);
+        -:  221:    }
+        -:  222:
+        -:  223:
+        -:  224:    // copiar el bloque de memoria del viejo arreglo al nuevo...
+        6:  225:    memcpy(newheap, heap, cant * sizeof(Comparable *));
+        -:  226:
+        -:  227:    // eliminar el viejo arreglo...
+        6:  228:    delete [] heap;
+        -:  229:
+        -:  230:    // cambiar las referencias...
+        6:  231:    heap = newheap;
+        6:  232:    capacity = nc;
+        6:  233:}
+        -:  234:
+        -:  235:/*
+        -:  236: * Privado. Auxiliar de los constructores.
+        -:  237: */
+        2:  238:void Heap::init(int n, bool t)
+        -:  239:{
+        2:  240:    int th = n;
+        2:  241:    if(th <= 0) th = 100;
+        -:  242:
+        2:  243:    heap = new (nothrow) Comparable *[th];
+        2:  244:    if( ! heap )
+        -:  245:    {
+    #####:  246:        cout << "Memoria insuficiente..." << endl;
+    #####:  247:        system("pause");
+    #####:  248:        exit(1);
+        -:  249:    }
+        -:  250:
+        2:  251:    capacity = th;
+        2:  252:    initial_capacity = th;
+        2:  253:    count = 0;
+        2:  254:    ascendent = t;
+        2:  255:}
+        -:  256:
+        -:  257:
+        -:  258:/*
+        -:  259: * Privado. Chequea dos elementos hermanos y retorna true si el optimo es el izquierdo, o false si es
+        -:  260: * el derecho. Entendemos por "optimo" al menor de los dos si el heap es ascendente, o al mayor
+        -:  261: * si el heap es descendente.
+        -:  262: */
+     5660:  263:bool Heap::optimal_left(int sl, int sr)
+        -:  264:{
+     5660:  265:    int r = heap[sl]->compareTo(heap[sr]);
+        -:  266:
+        -:  267:    // si el heap es ascendente y el izquierdo es menor que el derecho, salir con true...
+     5660:  268:    if( ascendent && r < 0 ) return true;
+        -:  269:
+        -:  270:    // si el heap es descendente y el izquierdo es mayor que el derecho, salir con true...
+     2674:  271:    if( ! ascendent && r > 0) return true;
+        -:  272:
+        -:  273:    // el optimo no es el izquierdo...
+     2674:  274:    return false;
+        -:  275:}
+        -:  276:
+        -:  277:/*
+        -:  278: *  Privado. Retorna true el elemento en la posici�n s del heap deberia intercambiarse con el
+        -:  279: *  elemento en la posicion f del heap. Se supone que heap[s] es hijo (izquierdo o
+        -:  280: *  derecho) de heap[f], aunque el metodo no valida ese supuesto. La comprobacion se
+        -:  281: *  realiza de acuerdo al tipo de heap: si es un heap ascendente, se retornara true si
+        -:  282: *  heap[s] < heap[f], pero si el heap es descendente se retornara true si heap[s] > heap[f].
+        -:  283: */
+     7338:  284:bool Heap::valid_change(int s, int f)
+        -:  285:{
+        -:  286:    // comparar el hijo (heap[s]) con el padre (heap[f])...
+     7338:  287:    int r = heap[s]->compareTo(heap[f]);
+        -:  288:
+        -:  289:    // ...si el menor debiera estar arriba, pero esta abajo, retorne true...
+     7338:  290:    if(ascendent && r < 0) return true;
+        -:  291:
+        -:  292:    // ...si el mayor debiera estar arriba, pero esta abajo, retorne true...
+     1106:  293:    if( ! ascendent && r > 0) return true;
+        -:  294:
+        -:  295:    // en cualquier otro caso, esta todo en orden... y no hay que hacer cambios...
+     1106:  296:    return false;
+        -:  297:}
+        -:  298:
+        -:  299:/*
+        -:  300: *  Privado. Controla que x sea compatible con el contenido del Heap.
+        -:  301: */
+     1022:  302:bool Heap::isHomogeneus(Comparable *x)
+        -:  303:{
+     1022:  304:    if ( x == NULL ) return false;
+     1022:  305:    if( count != 0 && typeid(*x) != typeid(*heap[0]) ) return false;
+     1022:  306:    return true;
+       18:  307:}

@@ -1,0 +1,27 @@
+        -:    0:Source:../../HuffmanModificado/Frequency.cpp
+        -:    0:Programs:17
+        -:    1:#include "Frequency.h"
+        -:    2:
+    #####:    3:Frequency::Frequency()
+        -:    4:{
+    #####:    5:    indice = -1;
+    #####:    6:    frecuencia = 0;
+    #####:    7:}
+        -:    8:
+     1022:    9:Frequency::Frequency(int i, int f)
+        -:   10:{
+     1022:   11:    indice = i;
+     1022:   12:    frecuencia = f;
+     1022:   13:}
+        -:   14:
+        -:   15:
+    #####:   16:Frequency::~Frequency()
+        -:   17:{
+    #####:   18:}
+        -:   19:
+    12998:   20:int Frequency::compareTo(Object * x)
+        -:   21:{
+    12998:   22:    Frequency *p = dynamic_cast < Frequency * > ( x );
+    12998:   23:    return this->frecuencia - p->frecuencia;
+       18:   24:}
+        -:   25:

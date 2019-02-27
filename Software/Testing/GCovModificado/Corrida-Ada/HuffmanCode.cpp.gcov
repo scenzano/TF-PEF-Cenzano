@@ -1,0 +1,44 @@
+        -:    0:Source:../../HuffmanModificado/HuffmanCode.cpp
+        -:    0:Programs:17
+        -:    1:#include "HuffmanCode.h"
+        -:    2:
+    #####:    3:HuffmanCode::HuffmanCode(HuffmanCode *c)
+        -:    4:{
+    #####:    5:    int i = 0;
+    #####:    6:    int offset = MAXBITS % 8;
+    #####:    7:    int posicion_comienzo = c->startPos;
+        -:    8:
+    #####:    9:    for (i = offset - 1; i >= 0; --i)
+        -:   10:    {
+    #####:   11:        bits[i] = c->bits[i];
+        -:   12:    }
+    #####:   13:    for(int i = MAXBITS - 1; i >= (offset + posicion_comienzo); i-=8)
+        -:   14:    {
+    #####:   15:        bits[i] = c->bits[i];
+    #####:   16:        bits[i - 1] = c->bits[i - 1];
+    #####:   17:        bits[i - 2] = c->bits[i - 2];
+    #####:   18:        bits[i - 3] = c->bits[i - 3];
+    #####:   19:        bits[i - 4] = c->bits[i - 4];
+    #####:   20:        bits[i - 5] = c->bits[i - 5];
+    #####:   21:        bits[i - 6] = c->bits[i - 6];
+    #####:   22:        bits[i - 7] = c->bits[i - 7];
+        -:   23:    }
+    #####:   24:    startPos = posicion_comienzo;
+    #####:   25:}
+        -:   26:
+     3072:   27:HuffmanCode::~HuffmanCode()
+        -:   28:{
+     1024:   29:    delete bits;
+     2048:   30:}
+        -:   31:
+     8292:   32:void HuffmanCode::setBit(int bit)
+        -:   33:{
+     8292:   34:    if( startPos == 0 )
+        -:   35:    {
+    #####:   36:        cout << "Codigo muy largo";
+    #####:   37:        exit(1);
+        -:   38:    }
+     8292:   39:    startPos--;
+     8292:   40:    bits[startPos] = bit;
+     8310:   41:}
+        -:   42:
